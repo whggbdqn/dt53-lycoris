@@ -5,21 +5,21 @@
 ## 应用技术
 
 * 整体框架：Spring + SpringMVC + Mybatis
-* 前端框架：
+* 前端框架：AdminLTE
 * excel操作：poi
 
 ## 使用工具软件
 
 |软件名称|扩展名|软件用途|
 |--|--|--:|
-| xMind|绘制思维导图|*.xmind|
-| Power Designer|数据库设计|*.pdm|
-| MS visio|绘制流程图|*.vsd|
-| Axure RP|绘制业务原型|*.rp|
+| xMind|*.xmind|绘制思维导图|
+| Power Designer|*.pdm|数据库设计|
+| MS visio|*.vsd|绘制流程图|
+| Axure RP|*.rp|绘制业务原型|
 
 ## 项目成员
 
-* 沈哲曦
+* 苏上
 * 姚楠
 * 黄亮
 * 宋欢欢
