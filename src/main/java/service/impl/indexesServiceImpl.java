@@ -2,11 +2,16 @@ package service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import dao.IndexesMapper;
 import entity.Indexes;
 import service.indexesService;
-
+@Service("indexesService")
 public class indexesServiceImpl implements indexesService {
-
+@Autowired
+private IndexesMapper indexesMapper;
 	@Override
 	public int deleteByPrimaryKey(Integer id) {
 		// TODO Auto-generated method stub
@@ -45,8 +50,7 @@ public class indexesServiceImpl implements indexesService {
 
 	@Override
 	public List<Indexes> getFirstClassIndex() {
-		// TODO Auto-generated method stub
-		return null;
+		return indexesMapper.getFirstClassIndex();
 	}
 
 }
