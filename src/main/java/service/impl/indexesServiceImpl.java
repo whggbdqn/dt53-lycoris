@@ -12,7 +12,6 @@ import service.IndexesService;
 public class indexesServiceImpl implements IndexesService {
 @Autowired
 private IndexesMapper indexesMapper;
-
 	@Override
 	public int deleteByPrimaryKey(Integer id) {
 		// TODO Auto-generated method stub

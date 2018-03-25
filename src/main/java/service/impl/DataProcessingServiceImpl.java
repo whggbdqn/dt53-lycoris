@@ -181,7 +181,6 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 			 Set<String> afterProcessing=null;
 			 for (Originaldata od : originaldata) {//开始第一次每条处理
 				 afterProcessing=this.FirstGo(od.getCompanyinfo());//第一次处理返回结果集afterProcessing
-				 
 				// afterProcessing.addAll(this.SecondGo());
 			}
 			 return count;

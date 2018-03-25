@@ -5,6 +5,7 @@ import java.util.List;
 import entity.Originaldata;
 
 public interface OriginaldataService {
+	
 	/**
 	 * 添加信息到DB
 	 * @param list	信息集合

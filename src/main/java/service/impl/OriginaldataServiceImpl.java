@@ -131,7 +131,6 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	           // cell = row.getCell((short)1);
 	           // latitude = (int) cell.getNumericCellValue();
 	           // System.out.println("公司："+company+"\t"+"特点："+tags);
-	            
 	        }
 		return list;
 	}
