@@ -110,9 +110,9 @@ public class SensitiveWordInit {
 	}
 
 	/**
-	 * ��ȡ���дʿ��е����ݣ���������ӵ�set������
-	 * @author chenming 
-	 * @date 2014��4��20�� ����2:31:18
+	 * 获取索引表添加到set集合
+	 * @author ss
+	 * @date 2018-3-25
 	 * @return
 	 * @version 1.0
 	 * @throws Exception 

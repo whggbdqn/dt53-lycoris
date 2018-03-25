@@ -130,4 +130,7 @@
       parent = #{parent,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getFirstClassIndex" resultType="entity.Indexes">
+  	select indexinfo from indexes where indexclass=1
+  </select>
 </mapper>

@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import entity.Indexes;
 
 public interface IndexesMapper {
@@ -50,4 +52,10 @@ public interface IndexesMapper {
      * @mbggenerated Sun Mar 25 09:09:51 CST 2018
      */
     int updateByPrimaryKey(Indexes record);
+    /**
+     * 获取一级检索索引,indexclass=1
+     * @author ss
+     * @date 2018-3-25
+     */
+    List<Indexes> getFirstClassIndex();
 }
