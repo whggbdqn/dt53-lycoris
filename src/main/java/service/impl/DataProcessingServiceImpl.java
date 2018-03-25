@@ -2,9 +2,11 @@ package service.impl;
 
 import service.DataProcessingService;
 import service.IndexesService;
+import service.OriginaldataService;
 import util.SensitivewordFilter;
 
 import java.applet.AppletContext;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -16,10 +18,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import entity.Indexes;
+import entity.Originaldata;
 @Component("dataProcessing")
 public class DataProcessingServiceImpl implements DataProcessingService {
 	@Autowired
 	private IndexesService indexService;
+	@Autowired
+	private OriginaldataService originaldataService;
+	
 		@SuppressWarnings("rawtypes")
 		public HashMap sensitiveWordMap;
 		public static int minMatchTYpe = 1;  
@@ -94,7 +100,7 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 		public boolean isContaintSensitiveWord(String txt, int matchType) {
 			boolean flag = false;
 			for(int i = 0 ; i < txt.length() ; i++){
-				int matchFlag = this.CheckSensitiveWord(txt, i, matchType); //�ж��Ƿ���������ַ�
+				int matchFlag = this.CheckSensitiveWord(txt, i, matchType); 
 				if(matchFlag > 0){    
 					flag = true;
 				}
@@ -102,21 +108,21 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 			return flag;
 		}
 		@Override
-		public Set<String> getSensitiveWord(String txt, int matchType) {
+		public Set<String> getSensitiveWord(String companyinfo, int matchType) {
 			Set<String> sensitiveWordList = new HashSet<String>();
-			for(int i = 0 ; i < txt.length() ; i++){
-				int length = CheckSensitiveWord(txt, i, matchType);     
+			for(int i = 0 ; i < companyinfo.length() ; i++){
+				int length = CheckSensitiveWord(companyinfo, i, matchType);     
 				if(length > 0){    
-					sensitiveWordList.add(txt.substring(i, i+length));
+					sensitiveWordList.add(companyinfo.substring(i, i+length));
 					i = i + length - 1;   
 				}
 			}
 			return sensitiveWordList;
 		}
 		@Override
-		public String replaceSensitiveWord(String txt, int matchType, String replaceChar) {
-			String resultTxt = txt;
-			Set<String> set = getSensitiveWord(txt, matchType);     //��ȡ���е����д�
+		public String replaceSensitiveWord(String companyinfo, int matchType, String replaceChar) {
+			String resultTxt = companyinfo;
+			Set<String> set = getSensitiveWord(companyinfo, matchType);   
 			Iterator<String> iterator = set.iterator();
 			String word = null;
 			String replaceString = null;
@@ -138,13 +144,13 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 		}
 		@SuppressWarnings("rawtypes")
 		@Override
-		public int CheckSensitiveWord(String txt, int beginIndex, int matchType) {
+		public int CheckSensitiveWord(String companyinfo, int beginIndex, int matchType) {
 			boolean  flag = false;    
 			int matchFlag = 0;     
 			char word = 0;
 			Map nowMap = sensitiveWordMap;
-			for(int i = beginIndex; i < txt.length() ; i++){
-				word = txt.charAt(i);
+			for(int i = beginIndex; i < companyinfo.length() ; i++){
+				word = companyinfo.charAt(i);
 				nowMap = (Map) nowMap.get(word);   
 				if(nowMap != null){    
 					matchFlag++;    
@@ -165,12 +171,32 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 			return matchFlag;
 		}
 		/**
+		 * 数据处理
+		 * @author ss
+		 * @date 2018-3-25
+		 */
+		 public int DataGo(){
+			 int count=0;//初始化计数器
+			 List<Originaldata> originaldata = originaldataService.getDataForProcessing();//获取数据列表
+			 Set<String> afterProcessing=null;
+			 for (Originaldata od : originaldata) {//开始第一次每条处理
+				 afterProcessing=this.FirstGo(od.getCompanyinfo());//第一次处理返回结果集afterProcessing
+				 
+				// afterProcessing.addAll(this.SecondGo());
+			}
+			 return count;
+		 };
+		/**
 		  * 第一次过滤,返回一级关键词集合
 		  * @author ss
 		  * @date 2018-3-25
 		  */
 		@Override
-		public List<Indexes> FirstGo() {
+		public Set<String> FirstGo(String companyinfo) {
+			return this.getSensitiveWord(companyinfo, 1);
+		}
+		@Override
+		public Set<String> SecondGo(String companyinfo) {
 			// TODO Auto-generated method stub
 			return null;
 		}

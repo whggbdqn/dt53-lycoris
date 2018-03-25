@@ -3,10 +3,7 @@ package service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
-import org.springframework.test.context.TestExecutionListeners;
 
 import dao.IndexesMapper;
 import entity.Indexes;
@@ -15,6 +12,7 @@ import service.IndexesService;
 public class indexesServiceImpl implements IndexesService {
 @Autowired
 private IndexesMapper indexesMapper;
+
 	@Override
 	public int deleteByPrimaryKey(Integer id) {
 		// TODO Auto-generated method stub

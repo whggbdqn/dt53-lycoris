@@ -181,7 +181,7 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	@Override
 	public List<Originaldata> getDataForProcessing() {
 		// TODO Auto-generated method stub
-		return null;
+		return originaldataMapper.getDataForProcessing();
 	}
 
 }

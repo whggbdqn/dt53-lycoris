@@ -4,36 +4,17 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-
-/**
- * @Description: ���дʹ���
- * @Project��test
- * @Author : chenming
- * @Date �� 2014��4��20�� ����4:17:15
- * @version 1.0
- */
+ 
 public class SensitivewordFilter {
 	@SuppressWarnings("rawtypes")
 	private Map sensitiveWordMap = null;
-	public static int minMatchTYpe = 1;      //��Сƥ�����
-	public static int maxMatchType = 2;      //���ƥ�����
-	
-	/**
-	 * ���캯������ʼ�����дʿ�
-	 */
+	public static int minMatchTYpe = 1;  
+	public static int maxMatchType = 2;   
+	 
 	public SensitivewordFilter(){
 		sensitiveWordMap = new SensitiveWordInit().initKeyWord();
 	}
-	
-	/**
-	 * �ж������Ƿ���������ַ�
-	 * @author chenming 
-	 * @date 2014��4��20�� ����4:28:30
-	 * @param txt  ����
-	 * @param matchType  ƥ�����&nbsp;1����Сƥ�����2�����ƥ�����
-	 * @return ����������true�����򷵻�false
-	 * @version 1.0
-	 */
+	 
 	public boolean isContaintSensitiveWord(String txt,int matchType){
 		boolean flag = false;
 		for(int i = 0 ; i < txt.length() ; i++){
@@ -44,19 +25,9 @@ public class SensitivewordFilter {
 		}
 		return flag;
 	}
-	
-	/**
-	 * ��ȡ�����е����д�
-	 * @author chenming 
-	 * @date 2014��4��20�� ����5:10:52
-	 * @param txt ����
-	 * @param matchType ƥ�����&nbsp;1����Сƥ�����2�����ƥ�����
-	 * @return
-	 * @version 1.0
-	 */
+	 
 	public Set<String> getSensitiveWord(String txt , int matchType){
 		Set<String> sensitiveWordList = new HashSet<String>();
-		
 		for(int i = 0 ; i < txt.length() ; i++){
 			int length = CheckSensitiveWord(txt, i, matchType);    //�ж��Ƿ���������ַ�
 			if(length > 0){    //����,����list��
@@ -64,19 +35,9 @@ public class SensitivewordFilter {
 				i = i + length - 1;    //��1��ԭ������Ϊfor������
 			}
 		}
-		
 		return sensitiveWordList;
 	}
-	
-	/**
-	 * �滻�������ַ�
-	 * @author chenming 
-	 * @date 2014��4��20�� ����5:12:07
-	 * @param txt
-	 * @param matchType
-	 * @param replaceChar �滻�ַ���Ĭ��*
-	 * @version 1.0
-	 */
+	 
 	public String replaceSensitiveWord(String txt,int matchType,String replaceChar){
 		String resultTxt = txt;
 		Set<String> set = getSensitiveWord(txt, matchType);     //��ȡ���е����д�
@@ -91,35 +52,15 @@ public class SensitivewordFilter {
 		
 		return resultTxt;
 	}
-	
-	/**
-	 * ��ȡ�滻�ַ���
-	 * @author chenming 
-	 * @date 2014��4��20�� ����5:21:19
-	 * @param replaceChar
-	 * @param length
-	 * @return
-	 * @version 1.0
-	 */
+	 
 	private String getReplaceChars(String replaceChar,int length){
 		String resultReplace = replaceChar;
 		for(int i = 1 ; i < length ; i++){
 			resultReplace += replaceChar;
 		}
-		
 		return resultReplace;
 	}
-	
-	/**
-	 * ����������Ƿ���������ַ������������£�<br>
-	 * @author chenming 
-	 * @date 2014��4��20�� ����4:31:03
-	 * @param txt
-	 * @param beginIndex
-	 * @param matchType
-	 * @return��������ڣ��򷵻����д��ַ��ĳ��ȣ������ڷ���0
-	 * @version 1.0
-	 */
+	 
 	@SuppressWarnings({ "rawtypes"})
 	public int CheckSensitiveWord(String txt,int beginIndex,int matchType){
 		boolean  flag = false;    //���дʽ�����ʶλ���������д�ֻ��1λ�����
