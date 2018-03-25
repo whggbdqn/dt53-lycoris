@@ -17,5 +17,6 @@ public interface IndexesService {
      * @date 2018-3-25
      */
     List<Indexes> getFirstClassIndex();
+	List<Indexes> getSecondClassIndex();
     
 }

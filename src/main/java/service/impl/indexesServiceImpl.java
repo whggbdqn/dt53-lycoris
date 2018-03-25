@@ -2,8 +2,11 @@ package service.impl;
 
 import java.util.List;
 
+import org.jboss.weld.context.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.test.context.TestExecutionListeners;
 
 import dao.IndexesMapper;
 import entity.Indexes;
@@ -52,4 +55,10 @@ private IndexesMapper indexesMapper;
 	public List<Indexes> getFirstClassIndex() {
 		return indexesMapper.getFirstClassIndex();
 	}
+
+	@Override
+	public List<Indexes> getSecondClassIndex() {
+		return indexesMapper.getSecondClassIndex();
+	}
+	
 }
