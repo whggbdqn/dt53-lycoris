@@ -52,5 +52,4 @@ private IndexesMapper indexesMapper;
 	public List<Indexes> getFirstClassIndex() {
 		return indexesMapper.getFirstClassIndex();
 	}
-
 }
