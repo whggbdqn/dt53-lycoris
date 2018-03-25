@@ -23,4 +23,25 @@ public interface IndexesMapper {
      * @date 2018-3-25
      */
     List<Indexes> getSecondClassIndex();
-}
+    /**
+     * 获取父类标签，parent=0
+     * @author lk
+     * @date 2018-3-25
+     */
+    List<Indexes> getParentZeroLevelIndex();
+
+    /**
+     * 获取一级标签 
+     * @author lk
+     * @date 2018-3-25
+     */
+    List<Indexes> getParentOneLevelIndex();
+    
+    /**
+     * 获取二级标签
+     * @author lk
+     * @date 2018-3-25
+     */
+    List<Indexes> getParentTwoLevelIndex();
+    
+ }

@@ -2,8 +2,8 @@ package service.impl;
 
 import java.util.List;
 
-import org.jboss.weld.context.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.test.context.TestExecutionListeners;
@@ -60,5 +60,31 @@ private IndexesMapper indexesMapper;
 	public List<Indexes> getSecondClassIndex() {
 		return indexesMapper.getSecondClassIndex();
 	}
-	
+
+	@Override
+	public List<Indexes> getParentZeroLevelIndex(){
+		return indexesMapper.getParentZeroLevelIndex();
+	}
+
+	@Override
+	public List<Indexes> getParentOneLevelIndex() {		// TODO Auto-generated method stub
+		return indexesMapper.getParentOneLevelIndex();
+	}
+
+	@Override
+	public List<Indexes> getParentTwoLevelIndex() {
+		return indexesMapper.getParentTwoLevelIndex();
+	}
+
+	@Override
+	public int updateOneTag(Indexes indexes) {
+		int temp=indexesMapper.updateByPrimaryKey(indexes);
+		if(temp>0){
+			return 1;
+		}else{
+			return -1;
+		}
+	}
+
+
 }

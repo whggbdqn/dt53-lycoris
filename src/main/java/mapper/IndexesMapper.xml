@@ -96,4 +96,13 @@
      <select id="getSecondClassIndex" resultType="entity.Indexes">
   	select indexinfo from indexes where indexclass=2
   </select>
+    <select id="getParentZeroLevelIndex" resultType="entity.Indexes">
+  	select * from indexes where parent=0
+  </select>
+  <select id="getParentOneLevelIndex" resultType="entity.Indexes" parameterType="java.lang.Integer">
+  	SELECT * FROM INDEXES WHERE parent = #{id,jdbcType=INTEGER}
+  </select>
+   <select id="getParentTwoLevelIndex" resultType="entity.Indexes" parameterType="java.lang.Integer">
+  	SELECT * FROM INDEXES WHERE parent = #{id,jdbcType=INTEGER}
+  </select>
 </mapper>

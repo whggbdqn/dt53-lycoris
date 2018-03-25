@@ -17,6 +17,39 @@ public interface IndexesService {
      * @date 2018-3-25
      */
     List<Indexes> getFirstClassIndex();
-	List<Indexes> getSecondClassIndex();
+    /**
+     * 获取二级检索索引,indexclass=2
+     * @author lk
+     * @date 2018-3-25
+     */
+    List<Indexes> getSecondClassIndex();
+    
+    /**
+     * 获取父类标签，parent=0
+     * @author lk
+     * @date 2018-3-25
+     */
+    List<Indexes> getParentZeroLevelIndex();
+    /**
+     * 获取一级标签 
+     * @author lk
+     * @date 2018-3-25
+     */
+    List<Indexes> getParentOneLevelIndex();
+    /**
+     * 获取二级标签
+     * 
+     * @author lk
+     * @date 2018-3-25
+     */
+    List<Indexes> getParentTwoLevelIndex();
+    
+    /**
+     * 修改单个标签 
+     * 传入实体，成功返回1，失败返回0
+     * @author lk
+     * @data 2018-3-25
+     */
+    int updateOneTag(Indexes indexes);
     
 }

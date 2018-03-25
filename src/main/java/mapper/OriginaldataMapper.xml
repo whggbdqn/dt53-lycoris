@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="entity.Originaldata" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="companyname" property="companyname" jdbcType="VARCHAR" />
-    <result column="idarea" property="idarea" jdbcType="INTEGER" />
+    <result column="areainfo" property="areainfo" jdbcType="VARCHAR" />
     <result column="companyemail" property="companyemail" jdbcType="VARCHAR" />
     <result column="otherinfo" property="otherinfo" jdbcType="VARCHAR" />
   </resultMap>
@@ -12,7 +12,7 @@
     <result column="companyinfo" property="companyinfo" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, companyname, idarea, companyemail, otherinfo
+    id, companyname, areainfo, companyemail, otherinfo
   </sql>
   <sql id="Blob_Column_List" >
     companyinfo
@@ -30,10 +30,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="entity.Originaldata" >
-    insert into originaldata (id, companyname, idarea, 
+    insert into originaldata (id, companyname, areainfo, 
       companyemail, otherinfo, companyinfo
       )
-    values (#{id,jdbcType=INTEGER}, #{companyname,jdbcType=VARCHAR}, #{idarea,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{companyname,jdbcType=VARCHAR}, #{areainfo,jdbcType=INTEGER}, 
       #{companyemail,jdbcType=VARCHAR}, #{otherinfo,jdbcType=VARCHAR}, #{companyinfo,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -46,8 +46,8 @@
       <if test="companyname != null" >
         companyname,
       </if>
-      <if test="idarea != null" >
-        idarea,
+      <if test="areainfo != null" >
+        areainfo,
       </if>
       <if test="companyemail != null" >
         companyemail,
@@ -66,8 +66,8 @@
       <if test="companyname != null" >
         #{companyname,jdbcType=VARCHAR},
       </if>
-      <if test="idarea != null" >
-        #{idarea,jdbcType=INTEGER},
+      <if test="areainfo != null" >
+        #{areainfo,jdbcType=INTEGER},
       </if>
       <if test="companyemail != null" >
         #{companyemail,jdbcType=VARCHAR},
@@ -86,8 +86,8 @@
       <if test="companyname != null" >
         companyname = #{companyname,jdbcType=VARCHAR},
       </if>
-      <if test="idarea != null" >
-        idarea = #{idarea,jdbcType=INTEGER},
+      <if test="areainfo != null" >
+        areainfo = #{areainfo,jdbcType=INTEGER},
       </if>
       <if test="companyemail != null" >
         companyemail = #{companyemail,jdbcType=VARCHAR},
@@ -104,7 +104,7 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="entity.Originaldata" >
     update originaldata
     set companyname = #{companyname,jdbcType=VARCHAR},
-      idarea = #{idarea,jdbcType=INTEGER},
+      areainfo = #{areainfo,jdbcType=INTEGER},
       companyemail = #{companyemail,jdbcType=VARCHAR},
       otherinfo = #{otherinfo,jdbcType=VARCHAR},
       companyinfo = #{companyinfo,jdbcType=LONGVARCHAR}
@@ -113,9 +113,12 @@
   <update id="updateByPrimaryKey" parameterType="entity.Originaldata" >
     update originaldata
     set companyname = #{companyname,jdbcType=VARCHAR},
-      idarea = #{idarea,jdbcType=INTEGER},
+      areainfo = #{areainfo,jdbcType=INTEGER},
       companyemail = #{companyemail,jdbcType=VARCHAR},
       otherinfo = #{otherinfo,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getDataForProcessing" resultType="entity.Originaldata">
+  	select 
+  </select>
 </mapper>

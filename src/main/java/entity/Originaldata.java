@@ -3,7 +3,7 @@ package entity;
 public class Originaldata {
     private Integer id;
     private String companyname;
-    private Integer idarea;
+    private String areainfo;
     private String companyemail;
     private String otherinfo;
     private String companyinfo;
@@ -19,13 +19,13 @@ public class Originaldata {
     public void setCompanyname(String companyname) {
         this.companyname = companyname == null ? null : companyname.trim();
     }
-    public Integer getIdarea() {
-        return idarea;
-    }
-    public void setIdarea(Integer idarea) {
-        this.idarea = idarea;
-    }
-    public String getCompanyemail() {
+    public String getAreainfo() {
+		return areainfo;
+	}
+	public void setAreainfo(String areainfo) {
+		this.areainfo = areainfo;
+	}
+	public String getCompanyemail() {
         return companyemail;
     }
     public void setCompanyemail(String companyemail) {
