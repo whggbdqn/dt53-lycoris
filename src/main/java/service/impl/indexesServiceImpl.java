@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 
 import dao.IndexesMapper;
 import entity.Indexes;
-import service.indexesService;
+import service.IndexesService;
 @Service("indexesService")
-public class indexesServiceImpl implements indexesService {
+public class indexesServiceImpl implements IndexesService {
 @Autowired
 private IndexesMapper indexesMapper;
 	@Override

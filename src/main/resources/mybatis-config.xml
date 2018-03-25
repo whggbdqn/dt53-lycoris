@@ -5,5 +5,13 @@
 	<!-- 加载sql映射文件 -->
 	<mappers>
 		<mapper resource="mapper/UserMapper.xml"/>
+		<mapper resource="mapper/AreaMapper.xml"/>
+		<mapper resource="mapper/CompanyMapper.xml"/>
+		<mapper resource="mapper/CompanytoindexMapper.xml"/>
+		<mapper resource="mapper/GradeMapper.xml"/>
+		<mapper resource="mapper/IndexesMapper.xml"/>
+		<mapper resource="mapper/OriginaldataMapper.xml"/>
+		<mapper resource="mapper/UsertocompanyMapper.xml"/>
+		<mapper resource="mapper/UsertoindexMapper.xml"/>
 	</mappers>
 </configuration>

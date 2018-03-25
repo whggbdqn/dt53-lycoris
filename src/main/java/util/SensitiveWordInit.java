@@ -21,7 +21,6 @@ import com.mysql.jdbc.PreparedStatement;
 public class SensitiveWordInit {
 	@SuppressWarnings("rawtypes")
 	public HashMap sensitiveWordMap;
-	
 	public SensitiveWordInit(){
 		super();
 	}
@@ -34,11 +33,8 @@ public class SensitiveWordInit {
 	@SuppressWarnings("rawtypes")
 	public Map initKeyWord(){
 		try {
-			//��ȡ���дʿ�
 			Set<String> keyWordSet = readSensitiveWordFile();
-			//�����дʿ���뵽HashMap��
 			addSensitiveWordToHashMap(keyWordSet);
-			//spring��ȡapplication��Ȼ��application.setAttribute("sensitiveWordMap",sensitiveWordMap);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -46,64 +42,36 @@ public class SensitiveWordInit {
 	}
 
 	/**
-	 * ��ȡ���дʿ⣬�����дʷ���HashSet�У�����һ��DFA�㷨ģ�ͣ�<br>
-	 * �� = {
-	 *      isEnd = 0
-	 *      �� = {<br>
-	 *      	 isEnd = 1
-	 *           �� = {isEnd = 0
-	 *                �� = {isEnd = 1}
-	 *                }
-	 *           ��  = {
-	 *           	   isEnd = 0
-	 *           		�� = {
-	 *           			 isEnd = 1
-	 *           			}
-	 *           	}
-	 *           }
-	 *      }
-	 *  �� = {
-	 *      isEnd = 0
-	 *      �� = {
-	 *      	isEnd = 0
-	 *      	�� = {
-	 *              isEnd = 0
-	 *              �� = {
-	 *                   isEnd = 1
-	 *                  }
-	 *              }
-	 *      	}
-	 *      }
-	 * @author chenming 
-	 * @date 2014��4��20�� ����3:04:20
-	 * @param keyWordSet  ���дʿ�
+	 * 导入关键字集合,转换成DFA算法
+	 * @author ss
+	 * @date 2018-3-25
+	 * @param keyWordSet  
 	 * @version 1.0
 	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void addSensitiveWordToHashMap(Set<String> keyWordSet) {
-		sensitiveWordMap = new HashMap(keyWordSet.size());     //��ʼ�����д��������������ݲ���
+		sensitiveWordMap = new HashMap(keyWordSet.size());    
 		String key = null;  
 		Map nowMap = null;
 		Map<String, String> newWorMap = null;
-		//����keyWordSet
 		Iterator<String> iterator = keyWordSet.iterator();
 		while(iterator.hasNext()){
-			key = iterator.next();    //�ؼ���
+			key = iterator.next();    
 			nowMap = sensitiveWordMap;
 			for(int i = 0 ; i < key.length() ; i++){
-				char keyChar = key.charAt(i);       //ת����char��
-				Object wordMap = nowMap.get(keyChar);       //��ȡ
-				if(wordMap != null){        //������ڸ�key��ֱ�Ӹ�ֵ
+				char keyChar = key.charAt(i);    
+				Object wordMap = nowMap.get(keyChar);       
+				if(wordMap != null){  
 					nowMap = (Map) wordMap;
 				}
-				else{     //���������򹹽�һ��map��ͬʱ��isEnd����Ϊ0����Ϊ���������һ��
+				else{ 
 					newWorMap = new HashMap<String,String>();
-					newWorMap.put("isEnd", "0");     //�������һ��
+					newWorMap.put("isEnd", "0");  //非关键词结尾
 					nowMap.put(keyChar, newWorMap);
 					nowMap = newWorMap;
 				}
 				if(i == key.length() - 1){
-					nowMap.put("isEnd", "1");    //���һ��
+					nowMap.put("isEnd", "1");    //关键词结尾
 				}
 			}
 		}

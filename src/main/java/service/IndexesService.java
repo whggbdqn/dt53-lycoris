@@ -4,7 +4,7 @@ import java.util.List;
 
 import entity.Indexes;
 
-public interface indexesService {
+public interface IndexesService {
     int deleteByPrimaryKey(Integer id);
     int insert(Indexes record);
     int insertSelective(Indexes record);
