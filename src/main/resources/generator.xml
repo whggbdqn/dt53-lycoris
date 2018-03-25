@@ -28,31 +28,8 @@
     <javaClientGenerator type="XMLMAPPER" targetPackage="dao"  targetProject="src">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
-    <table schema="lycorisproject" tableName="user" enableCountByExample="false" enableUpdateByExample="false"
-           enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-    </table>
-     <table schema="lycorisproject" tableName="area" enableCountByExample="false" enableUpdateByExample="false"
-           enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-    </table>
-    <table schema="lycorisproject" tableName="company" enableCountByExample="false" enableUpdateByExample="false"
-           enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-    </table>
-    <table schema="lycorisproject" tableName="grade" enableCountByExample="false" enableUpdateByExample="false"
-           enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-    </table>
-    <table schema="lycorisproject" tableName="indexes" enableCountByExample="false" enableUpdateByExample="false"
-           enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-    </table>
-    <table schema="lycorisproject" tableName="companytoindex" enableCountByExample="false" enableUpdateByExample="false"
-           enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-    </table>
-    <table schema="lycorisproject" tableName="usertocompany" enableCountByExample="false" enableUpdateByExample="false"
-           enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-    </table>
-    <table schema="lycorisproject" tableName="usertoindex" enableCountByExample="false" enableUpdateByExample="false"
-           enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-    </table>
-    <table schema="lycorisproject" tableName="originaldata" enableCountByExample="false" enableUpdateByExample="false"
+   
+     <table schema="lycorisproject" tableName="grade" enableCountByExample="false" enableUpdateByExample="false"
            enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
     </table>
   </context>
