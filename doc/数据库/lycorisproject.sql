@@ -56,6 +56,18 @@ CREATE TABLE `companytoindex` (
 
 /*Data for the table `companytoindex` */
 
+/*Table structure for table `grade` */
+
+DROP TABLE IF EXISTS `grade`;
+
+CREATE TABLE `grade` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gradeinfo` varchar(15) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `grade` */
+
 /*Table structure for table `indexes` */
 
 DROP TABLE IF EXISTS `indexes`;
@@ -101,6 +113,7 @@ CREATE TABLE `user` (
   `userlevel` int(11) DEFAULT NULL,
   `picture` varchar(45) DEFAULT NULL,
   `idarea` int(11) DEFAULT NULL,
+  `idgrade` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
