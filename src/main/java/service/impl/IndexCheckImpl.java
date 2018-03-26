@@ -90,9 +90,6 @@ public class IndexCheckImpl implements IndexCheck {
 			for (Indexes indexes : list) {
 					set.add(indexes.getIndexinfo());
 			}
-			for (String s : set) {
-				System.out.println(s);
-			}
 		return set;
 	}
 	@Override
@@ -119,9 +116,12 @@ public class IndexCheckImpl implements IndexCheck {
 		return sensitiveWordList;
 	}
 	@Override
-	public String replaceSensitiveWord(String companyinfo, int matchType, String replaceChar,int indexClass) {
+	public Map<String, Object> replaceSensitiveWord(String companyinfo, int matchType, String replaceChar,int indexClass) {
 		String resultTxt = companyinfo;
-		Set<String> set = getSensitiveWord(companyinfo, matchType, indexClass);   
+		Map<String,Object> map=new HashMap<String,Object>();
+		Set<String> set = getSensitiveWord(companyinfo, matchType, indexClass);  
+		//得到第一次处理结果
+		map.put("sensitiveWordList", set);
 		Iterator<String> iterator = set.iterator();
 		String word = null;
 		String replaceString = null;
@@ -130,7 +130,9 @@ public class IndexCheckImpl implements IndexCheck {
 			replaceString = getReplaceChars(replaceChar, word.length());
 			resultTxt = resultTxt.replaceAll(word, replaceString);
 		}
-		return resultTxt;
+		//得到处理后公司信息
+		map.put("companyinfo", resultTxt);
+		return map;
 	}
 	@Override
 	public String getReplaceChars(String replaceChar, int length ) {

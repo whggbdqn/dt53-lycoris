@@ -25,7 +25,7 @@ public interface IndexCheck {
 	 Set<String> readSensitiveWordFile(int indexClass) throws Exception;
 	 boolean isContaintSensitiveWord(String txt,int matchType,int indexClass);
 	 Set<String> getSensitiveWord(String txt , int matchType,int indexClass);
-	 String replaceSensitiveWord(String txt,int matchType,String replaceChar,int indexClass);
+	 Map<String,Object> replaceSensitiveWord(String txt,int matchType,String replaceChar,int indexClass);
 	 String getReplaceChars(String replaceChar,int length );
 	 int CheckSensitiveWord(String txt,int beginIndex,int matchType,int indexClass);
 }
