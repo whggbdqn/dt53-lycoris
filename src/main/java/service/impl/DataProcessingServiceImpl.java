@@ -1,5 +1,6 @@
 package service.impl;
 
+import service.CompanyService;
 import service.DataProcessingService;
 import service.IndexCheck;
 import service.OriginaldataService;
@@ -20,15 +21,20 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 	private OriginaldataService originaldataService;//原始数据
 	@Autowired
 	private IndexCheck indexCheck;
-	
+	@Autowired
+	private CompanyService companyService;
+	//第一次处理结果集
 	private HashMap<String, Object> resultInfo;
+	//用于把处理后的结果集修改成要入库的字段
+	private StringBuffer cominfo;
 		/**
 		 * 数据处理
 		 * @author ss
 		 * @date 2018-3-25
 		 * 
 		 */
-		 public int DataGo(){
+		 @SuppressWarnings("unchecked")
+		public int DataGo(){
 			 int count=0;//初始化计数器
 			 List<Originaldata> originaldata = originaldataService.getDataForProcessing();//获取数据列表
 			 Set<String> FirstProcessing=null;
@@ -47,10 +53,20 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 				FirstProcessing.addAll(SecondProcessing);
 				//开始插入业务
 					//寻找对应公司
+				count=companyService.checkCompanyName(od.getCompanyname());
+				if(count==1){
 					
+				}
 			}
 			 return count;
 		 };
+		 private String getCompanyInfo(Set<String> set){
+			 	for (String str : set) {
+					cominfo.append(str).append("，");
+				}
+			return cominfo.deleteCharAt(cominfo.length()-1).toString();
+		 };
+		 
 		/**
 		  * 第一次过滤,返回一级关键词集合
 		  * @author ss

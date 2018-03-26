@@ -105,4 +105,7 @@
       idarea = #{idarea,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="checkCompanyName" resultType="int" parameterType="String">
+  	select count(1) from where companyname like #{companyName}
+  </select>
 </mapper>

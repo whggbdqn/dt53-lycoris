@@ -10,4 +10,5 @@ public interface CompanyMapper {
     int updateByPrimaryKeySelective(Company record);
     int updateByPrimaryKeyWithBLOBs(Company record);
     int updateByPrimaryKey(Company record);
+    int checkCompanyName(String companyName);
 }
