@@ -3,9 +3,16 @@ package entity;
 public class Company {
     private Integer id;
     private String companyname;
-    private String companyemail;
+	private String companyemail;
     private Integer idarea;
     private String companyinfo;
+    private String updatetime;
+    public String getUpdatetime() {
+		return updatetime;
+	}
+	public void setUpdatetime(String updatetime) {
+		this.updatetime = updatetime;
+	}
     public Integer getId() {
         return id;
     }

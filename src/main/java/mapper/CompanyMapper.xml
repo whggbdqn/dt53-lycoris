@@ -6,12 +6,13 @@
     <result column="companyname" property="companyname" jdbcType="VARCHAR" />
     <result column="companyemail" property="companyemail" jdbcType="VARCHAR" />
     <result column="idarea" property="idarea" jdbcType="INTEGER" />
+    <result column="updatetime" property="updatetime" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="entity.Company" extends="BaseResultMap" >
     <result column="companyinfo" property="companyinfo" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, companyname, companyemail, idarea
+    id, companyname, companyemail, idarea,updatetime
   </sql>
   <sql id="Blob_Column_List" >
     companyinfo
