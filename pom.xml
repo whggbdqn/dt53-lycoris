@@ -23,6 +23,11 @@
   
   
   <dependencies>
+  		 <dependency>  
+  			 <groupId>com.github.pagehelper</groupId>  
+   			 <artifactId>pagehelper</artifactId>  
+   			 <version>5.0.0</version>  
+		</dependency>  
         <!-- 添加spring核心依赖 -->
         <dependency>
             <groupId>org.springframework</groupId>

@@ -11,7 +11,14 @@ public class User {
     private String picture;
     private Integer idarea;
     private Integer idgrade;
-    public Integer getId() {
+    private Company company;
+    public Company getCompany() {
+		return company;
+	}
+	public void setCompany(Company company) {
+		this.company = company;
+	}
+	public Integer getId() {
         return id;
     }
     public void setId(Integer id) {

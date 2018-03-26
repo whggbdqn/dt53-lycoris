@@ -17,10 +17,35 @@
     <result column="picture" property="picture" jdbcType="VARCHAR" />
     <result column="idarea" property="idarea" jdbcType="INTEGER" />
     <result column="idgrade" property="idgrade" jdbcType="INTEGER" />
+     <collection property="company"  ofType="entity.Company">
+	  <id column="id" property="id" jdbcType="INTEGER" />
+	    <result column="companyname" property="companyname" jdbcType="VARCHAR" />
+	    <result column="companyemail" property="companyemail" jdbcType="VARCHAR" />
+	    <result column="idarea" property="idarea" jdbcType="INTEGER" />
+	    <result column="companyinfo" property="companyinfo" jdbcType="LONGVARCHAR" />
+	  </collection>
   </resultMap>
+  
   <sql id="Base_Column_List" >
     id, userID, username, password, email, tel, userlevel, picture, idarea, idgrade
   </sql>
+  <!-- 用户查单挑 -->
+   <select id="getUserMessage" resultType="entity.User"> 
+  		SELECT * FROM USER WHERE user.`id`=#{id}
+  </select>
+ <!--查询所有用戶  -->
+	 <select id="getAllUser" resultMap="BaseResultMap">
+		 select id, userID, username, password, email, tel, userlevel, picture, idarea, idgrade
+		  from user
+	 </select>
+	
+	<!--查詢用戶收藏的所以公司  -->
+	<select id="getAllCompanyByUser" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+	SELECT * FROM usertocompany AS a LEFT JOIN USER AS b ON a.`iduser`=b.`id`
+				 LEFT JOIN company AS c ON a.`idcompany`=c.`id`
+				 WHERE b.`id`=#{id,jdbcType=INTEGER}
+	</select>
+ 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

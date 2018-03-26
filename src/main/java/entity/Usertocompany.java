@@ -4,7 +4,15 @@ public class Usertocompany {
     private Integer id;
     private Integer iduser;
     private Integer idcompany;
-    public Integer getId() {
+    private String updatetime;
+  
+	public String getUpdatetime() {
+		return updatetime;
+	}
+	public void setUpdatetime(String updatetime) {
+		this.updatetime = updatetime;
+	}
+	public Integer getId() {
         return id;
     }
     public void setId(Integer id) {
