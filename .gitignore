@@ -4,3 +4,5 @@
 /.project
 /src/main/resources/jdbc-config.properties
 /src/main/resources/generator.xml
+/bin/
+/src/test/
