@@ -2,6 +2,7 @@ package service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.CompanyMapper;
 import entity.Company;
@@ -22,11 +23,10 @@ private CompanyMapper companyMapper;
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	@Transactional
 	@Override
 	public int insertSelective(Company record) {
-		// TODO Auto-generated method stub
-		return 0;
+		return companyMapper.insertSelective(record);
 	}
 
 	@Override
@@ -34,11 +34,10 @@ private CompanyMapper companyMapper;
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	@Transactional
 	@Override
 	public int updateByPrimaryKeySelective(Company record) {
-		// TODO Auto-generated method stub
-		return 0;
+		return companyMapper.updateByPrimaryKeySelective(record);
 	}
 
 	@Override

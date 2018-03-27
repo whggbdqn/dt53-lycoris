@@ -2,6 +2,7 @@ package service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.CompanytoindexMapper;
 import entity.Companytoindex;
@@ -21,7 +22,7 @@ private CompanytoindexMapper companytoindexMapper;
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
+	@Transactional
 	@Override//测试成功 by ss
 	public int insertSelective(Companytoindex record) {
 		return companytoindexMapper.insertSelective(record);

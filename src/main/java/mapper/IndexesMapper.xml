@@ -106,6 +106,6 @@
   	SELECT * FROM INDEXES WHERE parent = #{id,jdbcType=INTEGER}
   </select>
   <select id="getIndexID" resultType="int" parameterType="String">
-  	select id from indexes where indexinfo like #{indexinfo}
+  	select id from indexes where indexinfo = #{indexinfo}
   </select>
 </mapper>

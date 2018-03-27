@@ -24,7 +24,6 @@
 		<mapper resource="mapper/OriginaldataMapper.xml"/>
 		<mapper resource="mapper/UsertocompanyMapper.xml"/>
 		<mapper resource="mapper/UsertoindexMapper.xml"/>
-		<mapper resource="mapper/IndexForProcessing.xml"/>
 	</mappers>
 	
 	

@@ -87,6 +87,9 @@
       <if test="companyinfo != null" >
         companyinfo = #{companyinfo,jdbcType=LONGVARCHAR},
       </if>
+       <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=LONGVARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -106,6 +109,6 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="checkCompanyName" resultType="int" parameterType="String">
-  	select id from where companyname like #{companyName}
+  	select IFNULL(MAX(id),0) AS  id from company where companyname like #{companyName}
   </select>
 </mapper>

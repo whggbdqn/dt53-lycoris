@@ -8,6 +8,8 @@ import service.IndexCheck;
 import service.IndexesService;
 import service.OriginaldataService;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -54,6 +56,7 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 			 Set<String> SecondProcessing=null;
 			 String resultString;
 			 for (Originaldata od : originaldata) {//开始第一次每条处理
+				 company=new Company();
 				 resultInfo=this.FirstGo(od.getCompanyinfo().toLowerCase());
 				FirstProcessing= (Set<String>) resultInfo.get("sensitiveWordList");
 				 //第一次处理返回被处理后文本
@@ -65,8 +68,12 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 				//resultString=(String) resultInfo.get("companyinfo");
 				FirstProcessing.addAll(SecondProcessing);
 				//开始插入业务
+					//记录当前时间
+				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+				company.setUpdatetime(df.format(new Date()));
 					//寻找对应公司
-				int idcompany=companyService.checkCompanyName(od.getCompanyname());
+				int idcompany=0;
+				idcompany=companyService.checkCompanyName(od.getCompanyname());
 				//如果查到有记录
 				if(idcompany>0){
 					int id=0;
@@ -74,18 +81,41 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 						//查出索引词对应的id
 						id=indexesService.getIndexID(index);
 						//插入索引公司对照表
+						record=new Companytoindex();
 						record.setIdcompany(idcompany);
 						record.setIdindexes(id);
 						companytoindexService.insertSelective(record);
+						company.setId(idcompany);
+						companyService.updateByPrimaryKeySelective(company);//记录时间
 						count++;
 					}
 				}else{//没有该公司记录插入新的公司记录
-					company.setCompanyname(od.getCompanyname());
-					//获取公司地址
-					int idarea=areaService.getidArea(od.getAreainfo());
+						company.setCompanyname(od.getCompanyname());//设置实体属性--名称
+						//获取公司地址
+						int idarea=0;
+						idarea=areaService.getidArea(od.getAreainfo());
 					if(idarea>0){
-						company.setIdarea(idarea);
-					}
+						company.setIdarea(idarea);//设置实体属性--地区
+						}else{
+							area.setAreainfo(od.getAreainfo());
+							areaService.insertSelective(area);
+							idarea=areaService.getidArea(od.getAreainfo());
+							company.setIdarea(idarea);//设置实体属性--地区
+						}
+						companyService.insertSelective(company);//插入,包含时间
+						idcompany=companyService.checkCompanyName(od.getCompanyname());
+						//插入索引公司对照表
+						int id=0;
+						for (String index : FirstProcessing) {
+							//查出索引词对应的id
+							record=new Companytoindex();
+							id=indexesService.getIndexID(index);
+							//插入索引公司对照表
+							record.setIdcompany(idcompany);
+							record.setIdindexes(id);
+							companytoindexService.insertSelective(record);
+							count++;
+						}
 				}
 			}
 			 return count;
