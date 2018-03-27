@@ -1,26 +1,19 @@
 package entity;
 
 public class AreatoCompany {
-	private String id;
-	private String areainfo;
-	private Integer jishu;
-	public String getId() {
-		return id;
+	private String name;
+	private Integer value;
+	public Integer getValue() {
+		return value;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setValue(Integer value) {
+		this.value = value;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getAreainfo() {
-		return areainfo;
-	}
-	public void setAreainfo(String areainfo) {
-		this.areainfo = areainfo;
-	}
-	public int getJishu() {
-		return jishu;
-	}
-	public void setJishu(int jishu) {
-		this.jishu = jishu;
-	}
 }

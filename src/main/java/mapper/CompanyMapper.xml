@@ -113,7 +113,7 @@
   </select>
   <!--   查询地区有多少家公司  -->
   <select id="getAllAreabyCompany" resultType="entity.AreatoCompany">
-  SELECT a.`id`,a.`areainfo`,COUNT(2) AS jishu FROM company AS c 
+  SELECT  a.`areainfo` as name,COUNT(2) AS value FROM company AS c 
 LEFT JOIN AREA AS a ON c.`idarea`=a.`id`
 GROUP BY idarea
   </select> 

@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!-- 图表 -->
 <div id="wrapper">
 		<div id="main" style="width: 47%;height:400px;"></div>
-		<div id="main-right"><span>1111</span></div>
+		<div id="main-right"><span>目前公司分布</span></div>
 		<div id="main2" style="width: 47%;height:400px;padding-top: 30px;"></div>
 		<div id="main3" style="width: 47%;height:400px;"></div>
 		<div id="main4" style="width: 47%;height:400px;"></div>
