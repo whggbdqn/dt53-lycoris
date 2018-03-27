@@ -31,6 +31,7 @@
 	<!-- 加载mybatis配置文件 -->
 	<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 </bean>
+
 <!-- 使用MapperScannerConfigurer省略dao层实现类，自动生成实现类代理  -->
 <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 	<!-- 指定工厂 -->
@@ -38,6 +39,7 @@
 	<!-- 指定dao层接口所在的包 -->
 	<property name="basePackage" value="dao"></property>
 </bean>
+
 <!--扫描注解的业务类 -->
 <context:component-scan base-package="service.impl"></context:component-scan>
 <!-- 配置Spring的事务管理器  -->  

@@ -39,11 +39,10 @@ public class UserController {
 	 * @return	用户分页map集合
 	 * @throws Exception
 	 */
-	@ResponseBody 
 	@RequestMapping("/getAllUser.do")
-	public Map<String, Object> getAllUsers(Model model,Integer rows,Integer page)throws Exception{
+	public String getAllUsers(Model model,Integer rows,Integer page)throws Exception{
 		 rows=1;
-		 page=1;
+		 page=2;
 		PageHelper.startPage(page,rows);
 		System.out.println("页大小:"+rows);
 		System.out.println("页码:"+page);
@@ -55,8 +54,9 @@ public class UserController {
 		map.put("rows", Infolist);
 		map.put("total",new PageInfo<User>(Infolist).getTotal());
 		model.addAttribute("map",map);
-	    return map;
+	    return "index.jsp";
 	}
+	
 	//主键查询用户资料
 	@RequestMapping("user.do")
 				public String show(Model model) throws Exception{	
