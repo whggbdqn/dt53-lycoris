@@ -55,4 +55,7 @@
     set areainfo = #{areainfo,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+ <select id="getidArea" resultType="int" parameterType="String">
+ 	select id from area where areainfo like #{areainfo}
+ </select>
 </mapper>

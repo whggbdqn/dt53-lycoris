@@ -1,8 +1,11 @@
 package service.impl;
 
+import service.AreaService;
 import service.CompanyService;
+import service.CompanytoindexService;
 import service.DataProcessingService;
 import service.IndexCheck;
+import service.IndexesService;
 import service.OriginaldataService;
 
 import java.util.HashMap;
@@ -14,6 +17,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
+import entity.Area;
+import entity.Company;
+import entity.Companytoindex;
 import entity.Originaldata;
 @Component("dataProcessingService")
 public class DataProcessingServiceImpl implements DataProcessingService {
@@ -23,10 +29,17 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 	private IndexCheck indexCheck;
 	@Autowired
 	private CompanyService companyService;
+	@Autowired
+	private IndexesService indexesService;
+	@Autowired
+	private CompanytoindexService companytoindexService;
+	@Autowired
+	private AreaService areaService;
 	//第一次处理结果集
 	private HashMap<String, Object> resultInfo;
-	//用于把处理后的结果集修改成要入库的字段
-	private StringBuffer cominfo;
+	private Companytoindex record;
+	private Company company;
+	private Area area ;
 		/**
 		 * 数据处理
 		 * @author ss
@@ -53,18 +66,29 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 				FirstProcessing.addAll(SecondProcessing);
 				//开始插入业务
 					//寻找对应公司
-				count=companyService.checkCompanyName(od.getCompanyname());
-				if(count==1){
-					
+				int idcompany=companyService.checkCompanyName(od.getCompanyname());
+				//如果查到有记录
+				if(idcompany>0){
+					int id=0;
+					for (String index : FirstProcessing) {
+						//查出索引词对应的id
+						id=indexesService.getIndexID(index);
+						//插入索引公司对照表
+						record.setIdcompany(idcompany);
+						record.setIdindexes(id);
+						companytoindexService.insertSelective(record);
+						count++;
+					}
+				}else{//没有该公司记录插入新的公司记录
+					company.setCompanyname(od.getCompanyname());
+					//获取公司地址
+					int idarea=areaService.getidArea(od.getAreainfo());
+					if(idarea>0){
+						company.setIdarea(idarea);
+					}
 				}
 			}
 			 return count;
-		 };
-		 private String getCompanyInfo(Set<String> set){
-			 	for (String str : set) {
-					cominfo.append(str).append("，");
-				}
-			return cominfo.deleteCharAt(cominfo.length()-1).toString();
 		 };
 		 
 		/**

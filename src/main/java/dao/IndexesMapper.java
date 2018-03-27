@@ -44,4 +44,10 @@ public interface IndexesMapper {
      */
     List<Indexes> getParentTwoLevelIndex();
     
+    /**
+     * 查出某个索引对应的id
+     * @author ss
+     * @date 2018-3-26
+     */
+    int getIndexID(String indexinfo);
  }

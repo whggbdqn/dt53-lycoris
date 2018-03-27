@@ -83,5 +83,9 @@ private IndexesMapper indexesMapper;
 		}
 	}
 
+	@Override//测试ok by ss
+	public int getIndexID(String indexinfo) {
+		return indexesMapper.getIndexID(indexinfo);
+	}
 
 }
