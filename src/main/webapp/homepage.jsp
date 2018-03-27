@@ -60,7 +60,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="main3" style="width: 47%;height:400px;"></div>
 		<div id="main4" style="width: 47%;height:400px;"></div>
 </div>
-
 </div>
 <div id="userinfo">
 	<div id="login-no" style="text-align: center;">

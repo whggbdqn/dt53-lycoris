@@ -112,7 +112,7 @@
   	select IFNULL(MAX(id),0) AS  id from company where companyname like #{companyName}
   </select>
   <!--   查询地区有多少家公司  -->
-  <select id="getAllAreabyCompany" resultType="entity.AreatoCompany">
+  <select id="getAllAreabyCompany" resultType="pojo.AreatoCompany">
   SELECT  a.`areainfo` as name,COUNT(2) AS value FROM company AS c 
 LEFT JOIN AREA AS a ON c.`idarea`=a.`id`
 GROUP BY idarea

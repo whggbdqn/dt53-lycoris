@@ -2,8 +2,8 @@ package dao;
 
 import java.util.List;
 
-import entity.AreatoCompany;
 import entity.Company;
+import pojo.AreatoCompany;
 
 public interface CompanyMapper {
     int deleteByPrimaryKey(Integer id);

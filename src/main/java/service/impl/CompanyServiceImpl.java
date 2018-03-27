@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.CompanyMapper;
-import entity.AreatoCompany;
 import entity.Company;
+import pojo.AreatoCompany;
 import service.CompanyService;
 @Service("companyService")
 public class CompanyServiceImpl implements CompanyService {

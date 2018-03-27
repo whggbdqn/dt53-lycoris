@@ -25,9 +25,8 @@
 #wrapper{
 	float: left;
 	width: 70%;
-	height: 820px;
+	height: auto;
 	margin: 0px 0px 0px 110px;
-	border: 1px solid chocolate;
 	font-size: 24px;
 }	
 #wrapper div{

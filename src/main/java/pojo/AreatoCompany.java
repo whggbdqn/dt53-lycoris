@@ -1,4 +1,4 @@
-package entity;
+package pojo;
 
 public class AreatoCompany {
 	private String name;
