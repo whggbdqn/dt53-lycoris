@@ -1,0 +1,58 @@
+#nav-main{
+	width: 1000px;
+	margin: 0px auto;
+	font: "微软雅黑";
+	font-size: 18px;
+	float: left;
+	margin-left: 280px;
+	
+}
+#nav-main .navbar-header .navbar-brand{
+	padding: 25px 40px;
+}
+
+/*导航单个单元*/
+.dropdown .dropdown-toggle{
+	padding: 25px 40px;
+}
+#but-login{
+	float: right;
+	width: 110px;
+	margin: 15px 0px;
+	margin-right: 90px;
+	
+}
+#wrapper{
+	float: left;
+	width: 70%;
+	height: 820px;
+	margin: 0px 0px 0px 110px;
+	border: 1px solid chocolate;
+	font-size: 24px;
+}	
+#wrapper div{
+	margin: 0px 20px;
+	float: left;
+}
+#userinfo{
+	float: right;	
+	width: 250px;
+	padding: 40px 30px;
+	margin-right: 40px;
+	
+}
+#userinfo2{
+	float: right;	
+	width: 300px;
+	padding: 40px 20px;
+	margin-right: 100px;
+
+}
+#main-right{
+	width: 45%;
+	height:400px;
+	text-align: center;
+	line-height: 24px;
+	font-size: 18px;
+	padding-top: 10%;
+}

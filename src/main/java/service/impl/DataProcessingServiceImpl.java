@@ -45,7 +45,7 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 		/**
 		 * 数据处理
 		 * @author ss
-		 * @date 2018-3-25
+		 * @date 2018/3/25-3/27
 		 * 
 		 */
 		 @SuppressWarnings("unchecked")
@@ -55,8 +55,11 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 			 Set<String> FirstProcessing=null;
 			 Set<String> SecondProcessing=null;
 			 String resultString;
-			 for (Originaldata od : originaldata) {//开始第一次每条处理
+			 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+			 String time=df.format(new Date());//记录当前时间
+			 for (Originaldata od : originaldata) {//开始每条处理
 				 company=new Company();
+				 company.setCompanyemail(od.getCompanyemail());
 				 resultInfo=this.FirstGo(od.getCompanyinfo().toLowerCase());
 				FirstProcessing= (Set<String>) resultInfo.get("sensitiveWordList");
 				 //第一次处理返回被处理后文本
@@ -65,14 +68,10 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 				resultInfo=null;
 				//第二次处理获取关键字集合
 				SecondProcessing=this.SecondGo(resultString);
-				//resultString=(String) resultInfo.get("companyinfo");
+				//resultString=(String) resultInfo.get("companyinfo");废弃业务,返回除去关键字剩余的原文本,预计用于更新索引库
 				FirstProcessing.addAll(SecondProcessing);
 				//开始插入业务
-					//记录当前时间
-				SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
-				company.setUpdatetime(df.format(new Date()));
-					//寻找对应公司
-				int idcompany=0;
+				int idcompany=0;//寻找对应公司
 				idcompany=companyService.checkCompanyName(od.getCompanyname());
 				//如果查到有记录
 				if(idcompany>0){
@@ -86,7 +85,7 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 						record.setIdindexes(id);
 						companytoindexService.insertSelective(record);
 						company.setId(idcompany);
-						companyService.updateByPrimaryKeySelective(company);//记录时间
+						//companyService.updateByPrimaryKeySelective(company);//记录时间
 						count++;
 					}
 				}else{//没有该公司记录插入新的公司记录
@@ -118,6 +117,8 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 						}
 				}
 			}
+			 originaldataService.updateAfterProcessing();//修改原始数据标识,表示已处理
+			 companyService.setTime(time);
 			 return count;
 		 };
 		 
@@ -130,11 +131,16 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 		public HashMap<String, Object> FirstGo(String companyinfo) {
 			return (HashMap<String, Object>) indexCheck.replaceSensitiveWord(companyinfo, 1,"",1);
 		}
+		/**
+		  * 第二次过滤,返回二级关键词集合
+		  * @author ss
+		  * @date 2018-3-25
+		  */
 		@Override
 		public Set<String> SecondGo(String companyinfo) {
 			return indexCheck.getSensitiveWord(companyinfo, 1, 2);
 		}
-		
+		//测试成功 by ss 有点小问题,部分公司没有更新时间
 		public static void main(String[] args) {
 			ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
 			DataProcessingService dps=(DataProcessingService)ctx.getBean("dataProcessingService");

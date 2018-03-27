@@ -119,6 +119,9 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="getDataForProcessing" resultType="entity.Originaldata">
-	SELECT companyname,companyinfo,areainfo FROM originaldata WHERE otherinfo='0' 
+	SELECT companyname,companyinfo,areainfo,companyemail FROM originaldata WHERE otherinfo='0' 
  </select>
+ <update id="updateAfterProcessing">
+ 	update originaldata set otherinfo='1' where otherinfo='0'
+ </update>
 </mapper>

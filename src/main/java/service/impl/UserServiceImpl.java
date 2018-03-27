@@ -110,4 +110,9 @@ public class UserServiceImpl implements UserService {
 		return userMapper.getAllUserPartInfo();
 
 	}
+
+	@Override
+	public User loginDo(User user) {
+		return userMapper.loginDo(user);
+	}
 }

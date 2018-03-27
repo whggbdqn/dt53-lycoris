@@ -179,4 +179,7 @@
       idgrade = #{idgrade,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="loginDo" resultType="entity.User" parameterType="entity.User">
+  	select * from user where userid=#{userid} and password=#{password}
+  </select>
 </mapper>

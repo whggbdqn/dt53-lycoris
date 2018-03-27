@@ -69,5 +69,12 @@ public interface UserService {
 		 * @author  yf
 		 */
 	    List<User> getAllUserPartInfo();	
+	    /**
+	     * 登录
+	     * @author ss
+	     * @date 2018/3/27
+	     * 
+	     */
+	    User loginDo(User user);
 }
 	

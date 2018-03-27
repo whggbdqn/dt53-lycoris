@@ -1,5 +1,8 @@
 package service;
 
+import java.util.List;
+
+import entity.AreatoCompany;
 import entity.Company;
 
 public interface CompanyService {
@@ -11,4 +14,16 @@ public interface CompanyService {
 	    int updateByPrimaryKeyWithBLOBs(Company record);
 	    int updateByPrimaryKey(Company record);
 	    int checkCompanyName(String companyName);
+	    /**
+	     * 查询地区公司
+	     * @return	地区有多少家公司集合
+	    */
+	    List<AreatoCompany> getAllAreabyCompany();
+	    /**
+	     * 设置处理后数据记录时间
+	     * @author ss
+	     * @date 2018/3/27
+	     * 
+	     */
+	    void setTime(String time);
 }

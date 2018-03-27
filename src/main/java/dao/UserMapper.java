@@ -43,7 +43,14 @@ public interface UserMapper {
     User selectByPrimaryKey(Integer id);
     int updateByPrimaryKeySelective(User record);
     int updateByPrimaryKey(User record);
-    
     //查询登录
     List<User> getAllUserPartInfo();
+    /**
+     * 登录
+     * @author ss
+     * @date 2018/3/27
+     * 
+     */
+    User loginDo(User user);
+    
 }

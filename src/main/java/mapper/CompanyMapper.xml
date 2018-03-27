@@ -111,4 +111,13 @@
   <select id="checkCompanyName" resultType="int" parameterType="String">
   	select IFNULL(MAX(id),0) AS  id from company where companyname like #{companyName}
   </select>
+  <!--   查询地区有多少家公司  -->
+  <select id="getAllAreabyCompany" resultType="entity.AreatoCompany">
+  SELECT a.`id`,a.`areainfo`,COUNT(2) AS jishu FROM company AS c 
+LEFT JOIN AREA AS a ON c.`idarea`=a.`id`
+GROUP BY idarea
+  </select> 
+  <update id="setTime" parameterType="String">
+  	update company set updatetime=#{time} where updatetime is null
+  </update>
 </mapper>

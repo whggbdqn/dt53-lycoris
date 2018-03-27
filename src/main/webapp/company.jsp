@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -12,6 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="keywords" content="" />
 <meta name="description" content="" />
+<
 
 <link href="css/css.css" rel="stylesheet" />
 <script src="js/jquery-1.9.1.min.js"></script>
@@ -19,113 +20,45 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link href="css/index.css" rel="stylesheet"/>
 <link href="css/bootstrap.css" rel="stylesheet"/>
 <script language="JavaScript" type="text/javascript" src="js/souye.js"></script>
-<script src="echarts/echarts.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-1.9.1.min.js"></script>
-   <script type="text/javascript">
-       $(function(){
-           $("#shoucang").click(function(){
-			//左边功能显示
-			$("#table1").css("display","block");
-           });  
-           $("#duo,#jilu,#personal").click(function(){
-              $("#table1").css("display","none");
-           })  
-           
-    });
-       
-         
-     
-       
-               require(
-            [
-                'echarts',
-                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
-            ],
-            function (ec) {
-                // 基于准备好的dom，初始化echarts图表
-                var myChart = ec.init(document.getElementById('main')); 
-              
-              
-                
-        var option = {
-    title : { 
-        text: '来源北大青鸟光谷校区',
-        subtext: '真实有效数据分析',
-        x:'center'
-    },
-    tooltip : {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    }, 
-    legend: {
-        orient : 'vertical',
-        x : 'left',
-        data:['java基础','框架','新技术','java高级','工具']  
-      
-    },
+ <script src="echarts/echarts.js"></script>
+ <script src="js/bootstrap.min.js"></script>
+ <script src="js/jquery-1.9.1.min.js"></script>
 
-           calculable : true,
-    series : [
-        {
-            name:'北大青鸟',
-            type:'pie',
-            radius : '80%',
-            center: ['50%', '60%'],
-            data:[
-                {value:335, name:'java基础'},
-                {value:310, name:'框架'},
-                {value:234, name:'新技术'},
-                {value:135, name:'java高级'},
-                {value:1548, name:'工具'}
-            ]
-        }
-    ]
-};
-                       
-                // 为echarts对象加载数据 
-                myChart.setOption(option); 
-            }
-        );
-   </script>
-  </head>
-  
-  <body>
-    <body>
-	<!-- 导航条 -->
-	<nav class="navbar navbar-default navbar-static-top" role="navigation">
-	    <div class="container-fluid" id="nav-main">
-	    <div class="navbar-header">
-	        <a class="navbar-brand" href="homepage.jsp">面试宝典</a>
-	    </div>
+</script>
+</head>
+	<body>
+		<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid" id="nav-main">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="homepage.jsp">面试宝典</a>
+    </div>
     <div>
         <ul class="nav navbar-nav">
              <li class="dropdown">
-                <a href="company.jsp" class="dropdown-toggle" >浏览企业 </a>
+                <a href="company.jsp" class="dropdown-toggle" data-toggle="dropdown"> 浏览企业</a>
             </li>
              <li class="dropdown">
                 <a href="recommend.jsp" class="dropdown-toggle" data-toggle="dropdown">推荐企业 </a>
             </li>
             <li class="dropdown">
-                <a href="personal.jsp" class="dropdown-toggle" data-toggle="dropdown">个人资料</a>
+                <a href="personal.jsp" class="dropdown-toggle" data-toggle="dropdown">个人资料</a>     
             </li>
              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">教员菜单 <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 教员菜单 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="admin.jsp">管理用户信息</a></li>
                     <li class="divider"></li>
-                    <li><a href="#">管理公司信息</a></li>
+                    <li><a href="usercompany.jsp">管理公司信息</a></li>
                 </ul>
-            </li>       
+            </li>          
         </ul>
     </div>
     </div>
-    <button type="button" class="btn btn-block btn-success btn-lg" id="but-login">注册</button>
-</nav>
-<!-- 导航条回 -->
+     <button type="button" class="btn btn-block btn-success btn-lg" id="but-login" style="float: right; margin-right:50px;">返回登录</button>
 
-<!-- 收藏公司 -->
-<div id="table1" style="width: 60%; float: left; margin-left:10%;margin-top:50px;display: none;">
+</nav>
+
+	<div id="table1" style="width: 60%; float: left; margin-left:10%;margin-top:50px">
 		<table class="table table-hover">
 	<caption>
 		
@@ -230,21 +163,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<td>560001</td>
 		</tr>
 	</tbody>
-  </table>
+</table>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		<div id="userinfo" style="display: none;">
+	<div id="login-no" style="text-align: center;">
+	<h1>您还未登录！</h1>
+	<br />
+	<button type="button" class="btn btn-block btn-success btn-lg" id="but-login1">登录</button>
+	<button type="button" class="btn btn-block btn-success btn-lg" id="but-login2">注册</button>
 </div>
-
-
-<!-- 个人技能图 -->
-<div id="tukuai" style="disply:block;">
-		<div id="main" style="width:50%;height:350px; float: left; margin-left:15%"></div>
+<div>
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
 </div>
-     <div id="biaoqian" style="">
-        <button type="button" class="btn btn-info btn-sm">收藏公司</button>  
-        <button type="button" class="btn btn-info btn-sm">收藏公司</button>  
-        <button type="button" class="btn btn-info btn-sm">收藏公司</button>  
-        <button type="button" class="btn btn-info btn-sm">收藏公司</button>  
-     </div>
-
+	</div>
+	
 <div id="userinfo2" >
 <div class="box box-primary">
             <div class="box-body box-profile">
@@ -270,22 +215,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <!-- /.box-body -->
           </div>
- <div style="margin: 5px;">
-    <button type="button" class="btn btn-info btn-sm" id="shoucang">收藏公司</button> 
-	<button type="button" class="btn btn-info btn-sm" id="duo">技能标签和技能匹配图</button>  
-	<button type="button" class="btn btn-info btn-sm" id="personal">个人详细资料</button>  
-	<button type="button" class="btn btn-info btn-sm" id="jilu">个人浏览记录</button>  
+<div style="margin: 5px;">
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
+	<button type="button" class="btn btn-info btn-sm">小的信息按钮</button>  
 </div>
-    <table>
-    
-    	<c:forEach items="${map.rows }" var="u">
-    	<tr>
-    	<td> ${u.username }</td>
-    	</tr>
-    	</c:forEach>
-    
-    
-    
-    </table>
-  </body>
+</div>
+		
+
+
+
+	</body>
 </html>

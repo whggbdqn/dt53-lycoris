@@ -3,7 +3,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
@@ -31,62 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            $("#duo,#jilu,#personal").click(function(){
               $("#table1").css("display","none");
            })  
-           
-    });
-       
-         
-     
-       
-               require(
-            [
-                'echarts',
-                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
-            ],
-            function (ec) {
-                // 基于准备好的dom，初始化echarts图表
-                var myChart = ec.init(document.getElementById('main')); 
-              
-              
-                
-        var option = {
-    title : { 
-        text: '来源北大青鸟光谷校区',
-        subtext: '真实有效数据分析',
-        x:'center'
-    },
-    tooltip : {
-        trigger: 'item',
-        formatter: "{a} <br/>{b} : {c} ({d}%)"
-    }, 
-    legend: {
-        orient : 'vertical',
-        x : 'left',
-        data:['java基础','框架','新技术','java高级','工具']  
-      
-    },
-
-           calculable : true,
-    series : [
-        {
-            name:'北大青鸟',
-            type:'pie',
-            radius : '80%',
-            center: ['50%', '60%'],
-            data:[
-                {value:335, name:'java基础'},
-                {value:310, name:'框架'},
-                {value:234, name:'新技术'},
-                {value:135, name:'java高级'},
-                {value:1548, name:'工具'}
-            ]
-        }
-    ]
-};
-                       
-                // 为echarts对象加载数据 
-                myChart.setOption(option); 
-            }
-        );
+       })
    </script>
   </head>
   
@@ -234,16 +179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 
 
-<!-- 个人技能图 -->
-<div id="tukuai" style="disply:block;">
-		<div id="main" style="width:50%;height:350px; float: left; margin-left:15%"></div>
-</div>
-     <div id="biaoqian" style="">
-        <button type="button" class="btn btn-info btn-sm">收藏公司</button>  
-        <button type="button" class="btn btn-info btn-sm">收藏公司</button>  
-        <button type="button" class="btn btn-info btn-sm">收藏公司</button>  
-        <button type="button" class="btn btn-info btn-sm">收藏公司</button>  
-     </div>
+
 
 <div id="userinfo2" >
 <div class="box box-primary">
@@ -276,16 +212,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<button type="button" class="btn btn-info btn-sm" id="personal">个人详细资料</button>  
 	<button type="button" class="btn btn-info btn-sm" id="jilu">个人浏览记录</button>  
 </div>
-    <table>
-    
-    	<c:forEach items="${map.rows }" var="u">
-    	<tr>
-    	<td> ${u.username }</td>
-    	</tr>
-    	</c:forEach>
-    
-    
-    
-    </table>
   </body>
 </html>
