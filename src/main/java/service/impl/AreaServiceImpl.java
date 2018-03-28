@@ -1,5 +1,7 @@
 package service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Service;
 import dao.AreaMapper;
 import dao.UserMapper;
 import entity.Area;
+import pojo.Background;
+import pojo.Skill;
 import service.AreaService;
 @Service("areaService")
 public class AreaServiceImpl implements AreaService {
@@ -53,5 +57,25 @@ private AreaMapper areaMapper;
 	public int getidArea(String areainfo) {
 		 areainfo="%"+areainfo+"%";
 		return areaMapper.getidArea(areainfo);
+	}
+	  /**
+     * 查询地区的技术统计
+     * @author Asuna
+     * @param 地区表主键
+     * @date 2018/3/28
+     */
+	@Override
+	public List<Skill> countAreaSkill(int id) {
+		return areaMapper.countAreaSkill(id);
+	}
+	/**
+     * 查询地区的面试统计
+     * @author Asuna
+     * @param 地区表主键
+     * @date 2018/3/28
+     */
+	@Override
+	public List<Background> countAreaBackground(int id) {
+		return areaMapper.countAreaBackground(id);
 	}
 }

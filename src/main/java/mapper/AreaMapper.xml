@@ -58,4 +58,16 @@
  <select id="getidArea" resultType="int" parameterType="String">
  	select id from area where areainfo like #{areainfo}
  </select>
+ <select id="countAreaSkill" parameterType="int" resultType="pojo.Skill">
+	 SELECT indexinfo as name,COUNT(1) as value FROM skill AS s
+	LEFT JOIN companytoindex AS ci ON s.id=ci.idindexes 
+	LEFT JOIN company AS c ON ci.idcompany=c.id
+	LEFT JOIN AREA AS a ON a.id=c.idarea WHERE a.id=1 GROUP BY indexinfo ORDER BY VALUE DESC LIMIT 0,15
+ </select>
+ <select id="countAreaSkill" parameterType="int" resultType="pojo.Background">
+SELECT indexinfo AS NAME,COUNT(1) AS VALUE FROM background AS b
+LEFT JOIN companytoindex AS ci ON b.id=ci.idindexes 
+LEFT JOIN company AS c ON ci.idcompany=c.id
+LEFT JOIN AREA AS a ON a.id=c.idarea WHERE a.id=1 GROUP BY indexinfo ORDER BY VALUE DESC LIMIT 0,15
+ </select>
 </mapper>

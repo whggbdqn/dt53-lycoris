@@ -1,6 +1,10 @@
 $(function(){//加载事件*************************************************************
-	var location=[];
-	var atc=[];
+	var location=[];//图表1的地区列
+	var atc=[];//图表1的统计
+	var skillname=[];//图表2的技术名列
+	var skill=[];//图表2 的数据
+	var backgroundname=[];//图表3的项目列
+	var background=[];//图表3 的数据
 	$.post("homepage.do",null,function(data){
 		for(var i=0;i<data.length;i++){
 			location.push(data[i].name);
@@ -54,17 +58,40 @@ require(
                 // 基于准备好的dom，初始化echarts图表
                 var myChart3 = ec.init(document.getElementById('main1')); 
 var option = {
-    xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: [120, 200, 150, 80, 70, 110, 130],
-        type: 'bar'
-    }]
+		   title: {
+		        text: '关注点:技术',
+		        subtext: '数据来自青鸟'
+		    },
+		    tooltip: {
+		        trigger: 'axis',
+		        axisPointer: {
+		            type: 'shadow'
+		        }
+		    },
+		    legend: {
+		        data: ['2011年', '2012年']
+		    },
+		    grid: {
+		        left: '3%',
+		        right: '4%',
+		        bottom: '3%',
+		        containLabel: true
+		    },
+		    xAxis: {
+		        type: 'value',
+		        boundaryGap: [0, 0.01]
+		    },
+		    yAxis: {
+		        type: 'category',
+		        data: ['巴西','印尼','美国','印度','中国','世界人口(万)']
+		    },
+		    series: [
+		        {
+		            name: '2011年',
+		            type: 'bar',
+		            data: [18203, 23489, 29034, 104970, 131744, 630230]
+		        }
+		    ]
 };
   		myChart3.setOption(option); 
             }
