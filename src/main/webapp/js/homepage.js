@@ -52,7 +52,7 @@ require(
             ],
             function (ec) {
                 // 基于准备好的dom，初始化echarts图表
-                var myChart3 = ec.init(document.getElementById('main3')); 
+                var myChart3 = ec.init(document.getElementById('main1')); 
 var option = {
     xAxis: {
         type: 'category',
@@ -74,23 +74,23 @@ var option = {
                 'echarts',
                 'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
             ],
-            function (ec) {
-                // 基于准备好的dom，初始化echarts图表
-                var myChart4 = ec.init(document.getElementById('main4')); 
-var option = {
-    xAxis: {
-        type: 'category',
-        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    },
-    yAxis: {
-        type: 'value'
-    },
-    series: [{
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: 'line'
-    }]
-};
-	myChart4.setOption(option); 
+function (ec) {
+    // 基于准备好的dom，初始化echarts图表
+    var myChart4 = ec.init(document.getElementById('main2')); 
+	var option = {
+	    xAxis: {
+	        type: 'category',
+	        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+	    },
+	    yAxis: {
+	        type: 'value'
+	    },
+	    series: [{
+	        data: [820, 932, 901, 934, 1290, 1330, 1320],
+	        type: 'line'
+	    }]
+	};
+			myChart4.setOption(option); 
             }
         );
 })  //加载事件*************************************************************************

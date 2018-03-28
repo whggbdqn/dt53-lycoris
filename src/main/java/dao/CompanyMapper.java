@@ -26,4 +26,11 @@ public interface CompanyMapper {
      * 
      */
     void setTime(String time);
+    /**
+     * 查询地区面试方面统计
+     * 首页
+     * @author ss
+     * @date 2018/3/27
+     */
+    
 }

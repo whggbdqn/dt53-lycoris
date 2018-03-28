@@ -140,10 +140,14 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 		public Set<String> SecondGo(String companyinfo) {
 			return indexCheck.getSensitiveWord(companyinfo, 1, 2);
 		}
-		//测试成功 by ss 有点小问题,部分公司没有更新时间
-		public static void main(String[] args) {
+		//测试成功 by ss  索引改进中
+		/*public static void main(String[] args) {
 			ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
 			DataProcessingService dps=(DataProcessingService)ctx.getBean("dataProcessingService");
 			dps.DataGo();
-		}
+		}*/
+		//初始化已处理数据,
+//		TRUNCATE company;
+//		TRUNCATE companytoindex;
+//		UPDATE originaldata SET otherinfo ='0';
 	}
