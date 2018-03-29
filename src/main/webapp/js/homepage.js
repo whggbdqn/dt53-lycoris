@@ -9,8 +9,13 @@ $(function(){//加载事件*****************************************************
 		for(var i=0;i<data.atc.length;i++){
 			location.push(data.atc[i].name);
 		}
+		for(var i=0;i<data.skill.length;i++){
+			skillname.push(data.skill[i].name);
+			skill.push(data.skill[i].value);
+		}
 		atc=data.atc;
 	},"json");
+//图表1展示地区统计 *********************************************************************************
 require(
             [
                 'echarts',
@@ -49,6 +54,7 @@ require(
                 myChart.setOption(option); 
             }
         );
+//图表2展示技术统计 ****************************************************************************
    			require(
             [
                 'echarts',
@@ -68,9 +74,9 @@ var option = {
 		            type: 'shadow'
 		        }
 		    },
-		    legend: {
-		        data: ['2011年', '2012年']
-		    },
+//		    legend: {
+//		        data: skillname
+//		    },
 		    grid: {
 		        left: '3%',
 		        right: '4%',
@@ -83,19 +89,20 @@ var option = {
 		    },
 		    yAxis: {
 		        type: 'category',
-		        data: ['巴西','印尼','美国','印度','中国','世界人口(万)']
+		        data: skillname
 		    },
 		    series: [
 		        {
-		            name: '2011年',
+		            name: '记录次数',
 		            type: 'bar',
-		            data: [18203, 23489, 29034, 104970, 131744, 630230]
+		            data: skill
 		        }
 		    ]
 };
   		myChart3.setOption(option); 
             }
         );
+  //图表3展示技术统计 *************************************************************************
   			require(
             [
                 'echarts',

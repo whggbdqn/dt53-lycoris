@@ -8,22 +8,9 @@ public interface OriginaldataService {
 	/**
 	 * 添加信息到DB
 	 * @param list	信息集合
+	 * @author zhangzhe 3.25  16:39
 	 */
 	int insertOrginalData(List<Originaldata>list);
-	
-	/**
-	 * 生成并下载Excel模板到本地
-	 * @return	影响行数
-	 * @author zhangzhe
-	 */
-	int downExcelFile();
-	
-	/**
-	 * 上传指定格式的Excel文件
-	 * @return	影响行数
-	 * @author zhagnzhe
-	 */
-	int upExcelFile();
 	
 	/**
 	 * 读取Excel文件到内存
