@@ -44,7 +44,7 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	     * @param filePath excel文件的绝对路径
 	     * 
 	     */
-	    String filePath="C:\\Users\\Index\\Documents\\Tencent Files\\1225037533\\FileRecv\\CreateTest2.xlsx";
+	    String filePath="D:\\Myeclipse_workspace\\.metadata\\.me_tcat7\\webapps\\anywayMaven\\upload\\面试反馈表.xlsx";
 	        FileInputStream fis =null;
 	        Workbook wookbook = null;
 	        List<Originaldata>list=new ArrayList<Originaldata>();
@@ -101,7 +101,7 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	        String companyinfo = "";
 	        
 	       //获得所有数据
-	        for(int i = 1 ; i <= totalRowNum ; i++)
+	        for(int i = 2 ; i <= totalRowNum ; i++)
 	        {
 	            //获得第i行对象
 	            Row row = sheet.getRow(i);
@@ -119,7 +119,11 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	            areainfo = cell2.getStringCellValue().toString().trim();
 	            //邮箱
 	            Cell cell3 = row.getCell((short)3);
-	            companyemail = cell3.getStringCellValue().toString().trim();
+	            if(cell3.getStringCellValue()==null){
+	            	companyemail="null";
+	            }else{
+	            	companyemail = cell3.getStringCellValue().toString().trim();
+	            }
 	            //其他
 	           // Cell cell4 = row.getCell((short)4);
 	            otherinfo = "0";//cell4.getStringCellValue().toString();
@@ -132,7 +136,7 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	           // 获得一个数字类型的数据
 	           // cell = row.getCell((short)1);
 	           // latitude = (int) cell.getNumericCellValue();
-	           // System.out.println("公司："+company+"\t"+"特点："+tags);
+	           //System.out.println("公司："+originaldata.getCompanyname()+"\t"+"地区："+originaldata.getAreainfo());
 	            
 	        }
 		return list;
@@ -181,11 +185,6 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 
 
 	@Override
-	public int updateFlag() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	@Override
 	public void updateAfterProcessing() {
 		originaldataMapper.updateAfterProcessing();
 	}
@@ -199,4 +198,15 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	OriginaldataService dps=(OriginaldataService)ctx.getBean("originaldataService");
 	dps.insertOrginalData(dps.DecodingXlsx());
 }*/
+	@Override
+	public int updateFlag() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int upExcelFile() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

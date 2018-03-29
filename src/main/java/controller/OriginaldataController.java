@@ -9,22 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import util.ExcelUtil;
 
-
-
-
 @Controller
 public class OriginaldataController {
 	
-	@RequestMapping("/updateExcel.do")
+	@RequestMapping("/downloadExcel.do")
 	public String doGet(HttpServletRequest request, HttpServletResponse response,ServletOutputStream outputStream) throws Exception {
 		  //处理下载文件乱码问题
         response.setContentType("application/x-execl");
-        response.setHeader("Content-Disposition", "attachment;filename=" + new String("面试信息登记表.xlsx".getBytes(), "ISO-8859-1"));
+        response.setHeader("Content-Disposition", "attachment;filename=" + new String("面试反馈表.xlsx".getBytes(), "ISO-8859-1"));
         outputStream = response.getOutputStream();
 
         try {
             ExcelUtil.exportExcel(outputStream);  //封装的工具类
-            System.out.println("文件上传成功");
+            System.out.println("文件下载成功");
         } catch (Exception e) {
             e.printStackTrace();
         }

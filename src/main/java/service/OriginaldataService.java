@@ -12,6 +12,14 @@ public interface OriginaldataService {
 	 */
 	int insertOrginalData(List<Originaldata>list);
 	
+	
+	/**
+	 * 上传指定格式的Excel文件
+	 * @return	影响行数
+	 * @author zhagnzhe
+	 */
+	int upExcelFile();
+	
 	/**
 	 * 读取Excel文件到内存
 	 * @return	数据集合

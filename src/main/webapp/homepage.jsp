@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>首页</title>
+		<title>青鸟面试数据分析首页</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="keywords" content="" />
 <meta name="description" content="" />
@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="maininfo">
 							关于校区学员在各个城市的面试记录,当然并不是面试通过的结果,
 							而是每次学员面试的记录,所以这里只能告诉你目前大家都去了哪里面试
-							尝试的次数又是多少,很可惜我们并没有统计学员的信息,所以没有更多的
+							尝试的公司又是多少,很可惜我们并没有统计学员的信息,所以没有更多的
 							信息啦!
 				</div>
 				<div id="main" class="mainCharts"></div>

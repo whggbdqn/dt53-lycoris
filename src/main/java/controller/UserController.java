@@ -1,32 +1,27 @@
 package controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import entity.User;
-import pojo.AreatoCompany;
-import pojo.Background;
-import pojo.Skill;
-import service.AreaService;
-import service.CompanyService;
 import service.UserService;
+import service.WritingJsonTaskinterface;
 
 @Controller
+@EnableScheduling 
 public class UserController {
      @Autowired
      private UserService userService;
-     @Autowired
-     private CompanyService companyService;
-     @Autowired 
-     private AreaService areaService;
      //登录
      @RequestMapping("/Login.do")
      public String LoginUser(User user,HttpSession session) throws Exception{
@@ -38,29 +33,6 @@ public class UserController {
     		 return "homepage.jsp";
     	 }
      }
-     
-     /**
-      * 主页请求
-      * @author ss
-     * @return 
-      * @date 2018/3/27
-      */
-     @ResponseBody
-     @RequestMapping("homepage.do")
-     public Map<String, Object> showMainPage(){
-    	 int id=0;
-    	 if(id==0)
-    		 id=1;
-    	 Map<String, Object> map=new HashMap<String, Object>();
-    	List<AreatoCompany> atc = companyService.getAllAreabyCompany();
-    	List<Background> background=areaService.countAreaBackground(id);
-    	List<Skill> skill=areaService.countAreaSkill(id);
-    	map.put("atc", atc);
-    	map.put("skill", skill);
-    	map.put("background", background);
-    	return map;
-     }
-     
      //注册
      @ResponseBody
      @RequestMapping("/Register.do")

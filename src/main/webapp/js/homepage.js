@@ -5,13 +5,17 @@ $(function(){//加载事件*****************************************************
 	var skill=[];//图表2 的数据
 	var backgroundname=[];//图表3的项目列
 	var background=[];//图表3 的数据
-	$.post("homepage.do",null,function(data){
+	$.post("./json/homepage.json",null,function(data){
 		for(var i=0;i<data.atc.length;i++){
 			location.push(data.atc[i].name);
 		}
 		for(var i=0;i<data.skill.length;i++){
 			skillname.push(data.skill[i].name);
 			skill.push(data.skill[i].value);
+		}
+		for(var i=0;i<data.background.length;i++){
+			backgroundname.push(data.background[i].name);
+			background.push(data.background[i].value);
 		}
 		atc=data.atc;
 	},"json");
@@ -103,28 +107,51 @@ var option = {
             }
         );
   //图表3展示技术统计 *************************************************************************
-  			require(
-            [
-                'echarts',
-                'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
-            ],
-function (ec) {
-    // 基于准备好的dom，初始化echarts图表
-    var myChart4 = ec.init(document.getElementById('main2')); 
-	var option = {
-	    xAxis: {
-	        type: 'category',
-	        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-	    },
-	    yAxis: {
-	        type: 'value'
-	    },
-	    series: [{
-	        data: [820, 932, 901, 934, 1290, 1330, 1320],
-	        type: 'line'
-	    }]
-	};
-			myChart4.setOption(option); 
-            }
-        );
+   			require(
+   		            [
+   		                'echarts',
+   		                'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+   		            ],
+   		            function (ec) {
+   		                // 基于准备好的dom，初始化echarts图表
+   		                var myChart3 = ec.init(document.getElementById('main2')); 
+   		var option = {
+   				   title: {
+   				        text: '关注点:面试点',
+   				        subtext: '数据来自青鸟'
+   				    },
+   				    tooltip: {
+   				        trigger: 'axis',
+   				        axisPointer: {
+   				            type: 'shadow'
+   				        }
+   				    },
+//   				    legend: {
+//   				        data: skillname
+//   				    },
+   				    grid: {
+   				        left: '3%',
+   				        right: '4%',
+   				        bottom: '3%',
+   				        containLabel: true
+   				    },
+   				    xAxis: {
+   				        type: 'value',
+   				        boundaryGap: [0, 0.01]
+   				    },
+   				    yAxis: {
+   				        type: 'category',
+   				        data: backgroundname
+   				    },
+   				    series: [
+   				        {
+   				            name: '记录次数',
+   				            type: 'bar',
+   				            data: background
+   				        }
+   				    ]
+   		};
+   		  		myChart3.setOption(option); 
+   		            }
+   		        );
 })  //加载事件*************************************************************************
