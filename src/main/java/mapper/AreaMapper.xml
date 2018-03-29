@@ -64,7 +64,7 @@
 	LEFT JOIN company AS c ON ci.idcompany=c.id
 	LEFT JOIN AREA AS a ON a.id=c.idarea WHERE a.id=1 GROUP BY indexinfo ORDER BY VALUE DESC LIMIT 0,15
  </select>
- <select id="countAreaSkill" parameterType="int" resultType="pojo.Background">
+ <select id="countAreaBackground" parameterType="int" resultType="pojo.Background">
 SELECT indexinfo AS NAME,COUNT(1) AS VALUE FROM background AS b
 LEFT JOIN companytoindex AS ci ON b.id=ci.idindexes 
 LEFT JOIN company AS c ON ci.idcompany=c.id

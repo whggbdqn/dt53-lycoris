@@ -6,10 +6,10 @@ $(function(){//加载事件*****************************************************
 	var backgroundname=[];//图表3的项目列
 	var background=[];//图表3 的数据
 	$.post("homepage.do",null,function(data){
-		for(var i=0;i<data.length;i++){
-			location.push(data[i].name);
+		for(var i=0;i<data.atc.length;i++){
+			location.push(data.atc[i].name);
 		}
-		atc=data;
+		atc=data.atc;
 	},"json");
 require(
             [

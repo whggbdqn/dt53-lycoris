@@ -25,7 +25,8 @@ public class UserController {
      private UserService userService;
      @Autowired
      private CompanyService companyService;
-     @Autowired AreaService areaService;
+     @Autowired 
+     private AreaService areaService;
      //登录
      @RequestMapping("/Login.do")
      public String LoginUser(User user,HttpSession session) throws Exception{
@@ -46,7 +47,8 @@ public class UserController {
       */
      @ResponseBody
      @RequestMapping("homepage.do")
-     public Map<String, Object> showMainPage(int id){
+     public Map<String, Object> showMainPage(){
+    	 int id=0;
     	 if(id==0)
     		 id=1;
     	 Map<String, Object> map=new HashMap<String, Object>();
