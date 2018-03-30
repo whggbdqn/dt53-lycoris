@@ -90,7 +90,7 @@ function getDetil(){
 		                myChart.setOption(option); 
 		            }
 		        );
-		flag=1;	    
+		//flag=1;	    
 	}
 }
 	

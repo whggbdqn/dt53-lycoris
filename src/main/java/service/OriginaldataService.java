@@ -22,10 +22,11 @@ public interface OriginaldataService {
 	
 	/**
 	 * 读取Excel文件到内存
+	 * @param 上传Excel的绝对路径
 	 * @return	数据集合
 	 * @author zhangzhe
 	 */
-	List<Originaldata> DecodingXlsx();
+	List<Originaldata> DecodingXlsx(String Excelpath);
 	
 	/**
 	 * 修改原始数据库其他字段

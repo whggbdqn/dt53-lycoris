@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -10,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>青鸟面试数据分析</title>
+    <title>青鸟管理员页面</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -72,17 +71,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="homepage.jsp"><i class="fa fa-dashboard"></i> 首页</a>
                     </li>
                     <li>
-                        <a href="goCompany.do" class="active-menu" ><i class="fa fa-desktop"></i> 浏览公司</a>
+                        <a href="goCompany.do"><i class="fa fa-desktop"></i> 浏览公司</a>
                     </li>
 					<li>
-                        <a href="homepage.jsp"><i class="fa fa-bar-chart-o"></i>推荐公司</a>
+                        <a href="chart.html"><i class="fa fa-bar-chart-o"></i>推荐公司</a>
                     </li>
                     <li>
-                        <a href="homepage.jsp"><i class="fa fa-qrcode"></i> 个人信息</a>
+                        <a href="tab-panel.html"><i class="fa fa-qrcode"></i> 个人信息</a>
                     </li>
                     
                     <li>
-                        <a href="adminUser.jsp"><i class="fa fa-table"></i> 管理员入口</a>
+                        <a  class="active-menu" href="adminUser.jsp"><i class="fa fa-table"></i> 管理员入口</a>
                     </li>
                 </ul>
 
@@ -97,8 +96,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             北大青鸟 <small>Welcome ***</small>
                         </h1>
 					<ol class="breadcrumb">
-					  <li ><a href="homepange.jsp">首页</a></li>
-					   <li class="active"><a href="goCompany.do">浏览公司</a></li>
+					  <li ><a href="homepage.jsp">首页</a></li>
+					  <li class="active"><a href="adminUser.jsp">管理员页面</a></li>
 					</ol> 
 		</div>
             <div id="page-inner">
@@ -106,46 +105,47 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!-- /. ROW  -->
 	
 		<div class="row">
-                <div class="col-md-12">
-                    <div class="jumbotron">
-                        <h1>${company.companyname }</h1>
-                         <c:if test="${empty company.companyemail}">
-                        	<a>暂无此公司邮箱</a>
-                        </c:if>
-                        <c:if test="${not empty company.companyemail}">
-                        	<a>${company.companyemail }</a>
-                        </c:if>
-                        <c:if test="${empty company.companyinfo}">
-                        	<p>暂无此公司详情</p>
-                        </c:if>
-                        <c:if test="${not empty company.companyinfo}">
-                        	<p>${company.companyinfo }</p>
-                        </c:if>
-                    </div>
-                </div>
-            </div>
+			
+		</div><!--/.row-->
+			
 		
                 <div class="row">
-               			  <p>
-                            <a class="btn btn-primary btn-lg" role="button" onclick="getDetil();">查看详情</a>
-                        </p>
-                            <div class="panel-heading" style="width: 600px">
-                            	<h4>这是该公司在过往的面试中会问的问题哦!</h4>
-                            </div>
-		                            <input type="hidden" value="${company.id }" id="companyid">
-                                	<div id="companyDetilCharts" style="height: 480px;width: 600px"></div>
+                 	<div class="uploadContext"  style=" width: 750px">
+                 	<h3>
+                	请点击选择文件选择填写好的面试反馈表.xlxs进行上传，提交时数据库会自动将表中数据对
+                	应写入数据库，如Excel不对或文件格式不对将无法上传，请注意！</h3><br>
+                	</div>
+                <!-- 文件上传板块 -->
+                   <form action=uploadExcel.do method="post" enctype="multipart/form-data" id="form1">
+			            <input id="excel_file" type="file" name="pfile" accept="xlsx" size="30" /><br>	${info }<br><br>	
+			             <button  id="excel_button" type="submit" class="btn btn-default">导入Excel</button>
+			            <!-- <input id="excel_button" type="submit" value="导入Excel" /> -->
+    				</form>
                 </div>
 				
 				<div class="row">
-					
-				</div> 
-				
-			 <div class="row">
-					
-				</div>
-				
+				<!-- 文件下载板块 -->
+					 <a href=downloadExcel.do class="btn btn-primary btn-lg">模板下载</a>
+				</div> <br><br><br><br>
+			
 				
                 <div class="row">
+                   <div class="col-md-4 col-sm-4">
+                        <div  style="font-size: 20px">
+                        	上图是下载表格示例，其中每一列分别为:<br><br>
+                			公司名称(必填，请填写公司全名)<br>
+                			特点(选填，填写面试情况，具体见表中示例)<br>
+                			公司地区(必填，公司所在地名称)<br>
+                			邮箱(选填，公司的企业真实邮箱)<br><br>
+                			填写后将该文件上传即可！
+                        </div>
+                        <div class="panel-footer">
+						<img  src="img/a.png" width="1100px">
+                        </div>
+                    </div>
+                </div>
+                
+                  <div class="row">
                    <!-- 预留 -->
                 </div>
                 <!-- /. ROW  -->
@@ -166,18 +166,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 
     <!-- Metis Menu Js -->
     <script src="assets/js/jquery.metisMenu.js"></script>
-    <!-- Morris Chart Js -->
-    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="assets/js/morris/morris.js"></script>
-	
-	
-	<script src="assets/js/easypiechart.js"></script>
-	<script src="assets/js/easypiechart-data.js"></script>
-	
-	 <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
-	 <script src="echarts/echarts.js"></script>
     <!-- Custom Js -->
-    <script src="assets/js/CompanyDetil.js"></script>
+    <script src="assets/js/adminUser.js"></script>
 
       <script>
     

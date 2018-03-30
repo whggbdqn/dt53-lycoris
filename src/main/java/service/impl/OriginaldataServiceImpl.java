@@ -38,13 +38,13 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	}
 
 	@Override
-	public List<Originaldata> DecodingXlsx() {
+	public List<Originaldata> DecodingXlsx(String Excelpath) {
 		  /**
 	     * 读取出filePath中的所有数据信息
 	     * @param filePath excel文件的绝对路径
 	     * 
 	     */
-	    String filePath="D:\\Myeclipse_workspace\\.metadata\\.me_tcat7\\webapps\\anywayMaven\\upload\\面试反馈表.xlsx";
+	    String filePath=Excelpath;
 	        FileInputStream fis =null;
 	        Workbook wookbook = null;
 	        List<Originaldata>list=new ArrayList<Originaldata>();
@@ -85,7 +85,7 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	        Row rowHead = sheet.getRow(0);
 	        
 	        //判断表头是否正确
-	        if(rowHead.getPhysicalNumberOfCells() != 5)
+	        if(rowHead.getPhysicalNumberOfCells() != 4)
 	        {
 	            System.out.println("表头的数量不对!");
 	        }
@@ -119,7 +119,7 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	            areainfo = cell2.getStringCellValue().toString().trim();
 	            //邮箱
 	            Cell cell3 = row.getCell((short)3);
-	            if(cell3.getStringCellValue()==null){
+	            if(null==cell3||null==cell3.getStringCellValue()){
 	            	companyemail="null";
 	            }else{
 	            	companyemail = cell3.getStringCellValue().toString().trim();
@@ -136,7 +136,7 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	           // 获得一个数字类型的数据
 	           // cell = row.getCell((short)1);
 	           // latitude = (int) cell.getNumericCellValue();
-	           //System.out.println("公司："+originaldata.getCompanyname()+"\t"+"地区："+originaldata.getAreainfo());
+	          // System.out.println("公司："+originaldata.getCompanyname()+"\t"+"地区："+originaldata.getAreainfo());
 	            
 	        }
 		return list;

@@ -21,6 +21,7 @@ public class CompanyController {
 	@RequestMapping("goCompany.do")
 	public String getCompanyByArea(Integer num,Model model){
 		List<Company> list=companyService.getCompanyByArea();
+		System.out.println(list.size());
 		model.addAttribute("list",list);  //将数据设置model对象中，传递给页面
 		return "goCompany.jsp";  //返回视图
 	}

@@ -65,8 +65,8 @@ private AreaMapper areaMapper;
      * @date 2018/3/28
      */
 	@Override
-	public List<Skill> countAreaSkill(int id) {
-		return areaMapper.countAreaSkill(id);
+	public List<Skill> countAreaSkill() {
+		return areaMapper.countAreaSkill();
 	}
 	/**
      * 查询地区的面试统计
@@ -75,8 +75,8 @@ private AreaMapper areaMapper;
      * @date 2018/3/28
      */
 	@Override
-	public List<Background> countAreaBackground(int id) {
-		return areaMapper.countAreaBackground(id);
+	public List<Background> countAreaBackground() {
+		return areaMapper.countAreaBackground();
 	}
 
 	@Override

@@ -5,7 +5,7 @@
 	var skill=[];//图表2 的数据
 	var backgroundname=[];//图表3的项目列
 	var background=[];//图表3 的数据
-	$.post("homepage.do",null,function(data){
+	$.post("json/homepage.json",null,function(data){
 		for(var i=0;i<data.atc.length;i++){
 			location.push(data.atc[i].name);
 		}

@@ -82,7 +82,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </li>
                     
                     <li>
-                        <a href="homepage.jsp"><i class="fa fa-table"></i> 管理员入口</a>
+                        <a href="adminUser.jsp"><i class="fa fa-table"></i> 管理员入口</a>
                     </li>
                 </ul>
 

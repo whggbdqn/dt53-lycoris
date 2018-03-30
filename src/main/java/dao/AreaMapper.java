@@ -25,14 +25,14 @@ public interface AreaMapper {
      * @param 地区表主键
      * @date 2018/3/28
      */
-    List<Skill> countAreaSkill(int id);
+    List<Skill> countAreaSkill();
     /**
      * 查询地区的面试统计
      * @author Asuna
      * @param 地区表主键
      * @date 2018/3/28
      */
-    List<Background> countAreaBackground(int id);
+    List<Background> countAreaBackground();
     /**
      * 查询所有面试记录
      * @author Asuna

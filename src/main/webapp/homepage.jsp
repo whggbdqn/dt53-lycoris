@@ -81,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </li>
                     
                     <li>
-                        <a href="homepage.jsp"><i class="fa fa-table"></i> 管理员入口</a>
+                        <a href="adminUser.jsp"><i class="fa fa-table"></i> 管理员入口</a>
                     </li>
                 </ul>
 
@@ -136,7 +136,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 
                             </div>
                             <div class="panel-right">
-								<h3  class="datacount">758</h3>
+								<h3  class="datacount"></h3>
                                <strong> 总记录数</strong>
                             </div>
                         </div>
@@ -149,7 +149,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 
                             </div>
                             <div class="panel-right">
-							<h3 class="companycount">572 </h3>
+							<h3 class="companycount"> </h3>
                              <strong>公司统计</strong>
 
                             </div>

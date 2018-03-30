@@ -150,10 +150,8 @@ SELECT indexes.indexinfo ,COUNT(2) FROM  companytoindex AS cind
   </select>
   <!-- 按地区查询公司列表 分页 -->
   <select id="getCompanyByArea" resultMap="BaseResultMap">
-	SELECT c.`id` AS id,c.`companyname` AS companyname,a.areainfo AS areainfo,i.indexinfo AS indexinfo  FROM INDEXES i 
-    	RIGHT JOIN companytoindex ci ON ci.`idindexes`=i.id 
-    	RIGHT JOIN company c ON c.`id`=ci.`idcompany` 
-	RIGHT JOIN AREA a ON c.`idarea`=a.id GROUP BY indexinfo  ORDER BY id
+	SELECT c.`id` AS id,c.`companyname` AS companyname,a.areainfo AS areainfo,i.indexinfo AS indexinfo FROM companytoindex ci LEFT JOIN company c ON ci.`idcompany`=c.`id` LEFT JOIN INDEXES i ON ci.`idindexes`=i.id
+LEFT JOIN AREA a ON a.id=c.`idarea` ORDER BY id
   </select>
   <!-- 查询公司详情无标签 -->
   <select id="getCompanyDetil" resultType="entity.Company" parameterType="int">
