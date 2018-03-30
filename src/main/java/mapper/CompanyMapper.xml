@@ -120,4 +120,29 @@ GROUP BY idarea
   <update id="setTime" parameterType="String">
   	update company set updatetime=#{time} where updatetime is null
   </update>
+   <!--根据ID查询公司所有标签  -->
+  <select id="getLabelByCompany" resultType="pojo.CompanyInfoLabel" parameterType="java.lang.Integer">
+SELECT indexes.indexinfo ,COUNT(2) FROM  companytoindex AS cind
+	LEFT JOIN company AS c ON  cind.idcompany=c.id
+	LEFT JOIN INDEXES ON cind.idindexes=indexes.`id`
+	WHERE c.id= #{id,jdbcType=INTEGER}
+	GROUP BY indexinfo
+  </select>
+  <!-- 查询公司面试（人事）标签（公司详情图表专用）  -->
+  <select id="getLabelByPersonnel" resultType="pojo.CompanyInfoLabel" parameterType="java.lang.Integer">
+ SELECT indexes.`indexinfo` AS NAME ,COUNT(1) FROM companytoindex 
+	LEFT JOIN INDEXES ON companytoindex.`idcompany`=INDEXES.`id`
+	LEFT JOIN company ON companytoindex.`idindexes`=company.`id`
+ WHERE companytoindex.`idindexes`=1 AND indexes.`parent`= #{id,jdbcType=INTEGER}
+ GROUP BY indexinfo
+  </select>
+  <!-- 查询公司技术标签（公司详情图表专用） -->
+  <select id="getLabelByTechnology" resultType="pojo.CompanyInfoLabel" parameterType="java.lang.Integer">
+ SELECT s.indexinfo AS NAME, COUNT(1) AS VALUE FROM skill AS s 
+ LEFT JOIN companytoindex AS ci ON s.id=ci.idindexes 
+ LEFT JOIN company AS c ON c.id= ci.idcompany
+ WHERE c.id= #{id,jdbcType=INTEGER}
+ GROUP BY indexinfo 
+ ORDER BY VALUE deSC
+  </select>
 </mapper>

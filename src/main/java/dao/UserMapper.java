@@ -20,24 +20,25 @@ public interface UserMapper {
 	List<User> getAllUser();
 	
 	/**
-	 * 收藏公司
-	 * @param uc 多对多实体
-	 * @return	影响行数
-	 */
-	int	keepCompany(Usertocompany uc);
-	/**
-	 * 取消收藏公司
-	 * @param id	单条记录iD
-	 * @return	影响行数 
-	 */
-	int cancleKeepCompany(Integer id);
-	/**
 	 * 查询个人已收藏的公司及信息
 	 * @return	
 	 */
 	List<Usertocompany> getAllCompanyByUser(Integer id);
-	
+	/**
+	 * 多选删除用户
+	 * @param user_value
+	 * @return
+	 * @author ywz  2018.3.28  10：00
+	 */
+    int delmanyukey(Integer[] user_value);
+    /**
+	 * 单条删除用户
+	 * @param id
+	 * @return
+	 * @author ywz  2018.3.28  10：00
+	 */
     int deleteByPrimaryKey(Integer id);
+    
     int insert(User record);
     int insertSelective(User record);//注册
     User selectByPrimaryKey(Integer id);
