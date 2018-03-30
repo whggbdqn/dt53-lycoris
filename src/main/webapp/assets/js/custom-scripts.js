@@ -18,6 +18,8 @@
 		}
 		background=data.background;
 		atc=data.atc;
+		$(".companycount").text(data.count2);
+		$(".datacount").text(data.count1);
 	},"json");
     "use strict";
     

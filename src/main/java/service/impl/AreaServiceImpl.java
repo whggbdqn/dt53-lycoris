@@ -78,4 +78,18 @@ private AreaMapper areaMapper;
 	public List<Background> countAreaBackground(int id) {
 		return areaMapper.countAreaBackground(id);
 	}
+
+	@Override
+	public int getCountOrignalData() {
+		return areaMapper.getCountOrignalData();
+	}
+	/**
+     * 查询所有公司数量
+     * @author Asuna
+     * @date 2018/3/30
+     */
+	@Override
+	public int getCompanyCount() {
+		return areaMapper.getCompanyCount();
+	}
 }

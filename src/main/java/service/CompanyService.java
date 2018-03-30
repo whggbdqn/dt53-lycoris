@@ -3,7 +3,9 @@ package service;
 import java.util.List;
 
 import entity.Company;
+import entity.Indexes;
 import pojo.AreatoCompany;
+import pojo.IndexPojo;
 
 public interface CompanyService {
 	 int deleteByPrimaryKey(Integer id);
@@ -32,4 +34,16 @@ public interface CompanyService {
 	     * @date 2018/3/30
 	     */
 	    List<Company> getCompanyByArea();
+	    /**
+	     * 查询公司详情
+	     * @author Asuna
+	     * @date 2018/3/30
+	     */
+	    Company getCompanyDetil(Integer id);
+	    /**
+	     * 查询公司标签
+	     * @author Asuna
+	     * @date 2018/3/30
+	     */
+	    List<IndexPojo> getCompanyIndexes(Integer id);
 }

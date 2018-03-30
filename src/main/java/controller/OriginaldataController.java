@@ -18,7 +18,6 @@ public class OriginaldataController {
         response.setContentType("application/x-execl");
         response.setHeader("Content-Disposition", "attachment;filename=" + new String("面试反馈表.xlsx".getBytes(), "ISO-8859-1"));
         outputStream = response.getOutputStream();
-
         try {
             ExcelUtil.exportExcel(outputStream);  //封装的工具类
             System.out.println("文件下载成功");

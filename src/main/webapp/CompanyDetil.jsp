@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -105,95 +106,43 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!-- /. ROW  -->
 	
 		<div class="row">
-			
-		</div><!--/.row-->
-			
+                <div class="col-md-12">
+                    <div class="jumbotron">
+                        <h1>${company.companyname }</h1>
+                         <c:if test="${empty company.companyemail}">
+                        	<a>暂无此公司邮箱</a>
+                        </c:if>
+                        <c:if test="${not empty company.companyemail}">
+                        	<a>${company.companyemail }</a>
+                        </c:if>
+                        <c:if test="${empty company.companyinfo}">
+                        	<p>暂无此公司详情</p>
+                        </c:if>
+                        <c:if test="${not empty company.companyinfo}">
+                        	<p>${company.companyinfo }</p>
+                        </c:if>
+                    </div>
+                </div>
+            </div>
 		
                 <div class="row">
-                   
-                   
+               			  <p>
+                            <a class="btn btn-primary btn-lg" role="button" onclick="getDetil();">查看详情</a>
+                        </p>
+                            <div class="panel-heading" style="width: 600px">
+                            	<h4>这是该公司在过往的面试中会问的问题哦!</h4>
+                            </div>
+		                            <input type="hidden" value="${company.id }" id="companyid">
+                                	<div id="companyDetilCharts" style="height: 480px;width: 600px"></div>
                 </div>
 				
 				<div class="row">
 					
-						<div class="col-md-7">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-	                            关于在面试时的会被问道的技术问题,大体上我们都搜集到了,
-							    但是同学们似乎对记录信息并不感冒,有很多没有任何价值的记录哦.
-							    不过我们还是能从中找到一些端倪,看看目前在面试时各位都会被问
-							    到什么问题吧!
-	                            </div>
-	                            <div class="panel-body">
-	                                <div id="Skillchart" style="height: 500px;width: 850px" ></div>
-	                            </div>
-							</div>  
-						</div>
-						
-						 <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder blue">
-                            <div class="panel-left pull-left blue">
-                                <i class="fa fa-eye fa-5x"></i>
-                                
-                            </div>
-                            <div class="panel-right">
-								<h3>758</h3>
-                               <strong> 总记录数</strong>
-                            </div>
-                        </div>
-                    </div>
-						
-						  <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder blue">
-                            <div class="panel-left pull-left blue">
-                                <i class="fa fa-users fa-5x"></i>
-                                
-                            </div>
-                            <div class="panel-right">
-							<h3>572 </h3>
-                             <strong>公司统计</strong>
-
-                            </div>
-                        </div>
-                    </div>
-						
-						
 				</div> 
 				
 			 <div class="row">
 					
-						<div class="col-md-7">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-	                           关于在面试时,面试公司的非技术性信息,也包括一些对应聘者
-								的要求,对于青鸟的学员们,学历自然是最头疼的问题,然而似乎面试
-								公司也很喜欢去查学历呢!同时过往的工作经验几乎都是虚假的,怎么
-								处理能够通过面试呢?
-	                            </div>
-	                            <div class="panel-body">
-	                                <div id="Backgroundchart" style="height: 500px;width: 850px" ></div>
-	                            </div>
-							</div>  
-						</div>
-						
-						  <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="panel panel-default" style="width: 600px">
-                            <div class="panel-heading" style="width: 600px">
-                               关于校区学员在各个城市的面试记录,当然并不是面试通过的结果,
-								而是每次学员面试的记录,所以这里只能告诉你目前大家都去了哪里面试
-								尝试的公司又是多少,很可惜我们并没有统计学员的信息,所以没有更多的
-								信息啦!
-                            </div>
-                            <div class="panel-body">
-                                <div id="companyCount" style="height: 480px;width: 600px"></div>
-                            </div>
-                        </div>
-                    </div>
-						 
-                  
-						
-						
-				</div> 
+				</div>
 				
 				
                 <div class="row">
@@ -228,7 +177,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
 	 <script src="echarts/echarts.js"></script>
     <!-- Custom Js -->
-    <script src="assets/js/custom-scripts.js"></script>
+    <script src="assets/js/CompanyDetil.js"></script>
 
       <script>
     

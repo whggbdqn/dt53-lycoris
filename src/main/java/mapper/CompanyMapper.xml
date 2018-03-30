@@ -150,7 +150,21 @@ SELECT indexes.indexinfo ,COUNT(2) FROM  companytoindex AS cind
   </select>
   <!-- 按地区查询公司列表 分页 -->
   <select id="getCompanyByArea" resultMap="BaseResultMap">
-	SELECT c.`id` as id,c.`companyname` as companyname,a.areainfo as areainfo,i.indexinfo as indexinfo FROM company c LEFT JOIN AREA a ON c.`idarea`=a.id LEFT JOIN companytoindex ci ON c.`id`=ci.`idcompany` LEFT JOIN INDEXES i 
-	ON ci.`idindexes`=i.id
+	SELECT c.`id` AS id,c.`companyname` AS companyname,a.areainfo AS areainfo,i.indexinfo AS indexinfo  FROM INDEXES i 
+    	RIGHT JOIN companytoindex ci ON ci.`idindexes`=i.id 
+    	RIGHT JOIN company c ON c.`id`=ci.`idcompany` 
+	RIGHT JOIN AREA a ON c.`idarea`=a.id GROUP BY indexinfo  ORDER BY id
+  </select>
+  <!-- 查询公司详情无标签 -->
+  <select id="getCompanyDetil" resultType="entity.Company" parameterType="int">
+  	SELECT c.`id`,c.companyname,c.`companyemail`,c.`companyinfo`,c.`updatetime`
+	FROM company c
+	WHERE c.`id`=#{id}
+  </select>
+  <!-- 查询公司标签 -->
+  <select id="getCompanyIndexes" resultType="pojo.IndexPojo" parameterType="int">
+    	SELECT i.indexinfo AS name,COUNT(1) AS value FROM INDEXES i 
+    	RIGHT JOIN companytoindex ci ON ci.`idindexes`=i.id 
+    	RIGHT JOIN company c ON c.`id`=ci.`idcompany` WHERE c.`id`=#{id} GROUP BY i.indexinfo
   </select>
 </mapper>

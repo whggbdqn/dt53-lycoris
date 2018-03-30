@@ -75,14 +75,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="goCompany.do" class="active-menu" ><i class="fa fa-desktop"></i> 浏览公司</a>
                     </li>
 					<li>
-                        <a href="chart.html"><i class="fa fa-bar-chart-o"></i>推荐公司</a>
+                        <a href="homepage.jsp"><i class="fa fa-bar-chart-o"></i>推荐公司</a>
                     </li>
                     <li>
-                        <a href="tab-panel.html"><i class="fa fa-qrcode"></i> 个人信息</a>
+                        <a href="homepage.jsp"><i class="fa fa-qrcode"></i> 个人信息</a>
                     </li>
                     
                     <li>
-                        <a href="table.html"><i class="fa fa-table"></i> 管理员入口</a>
+                        <a href="homepage.jsp"><i class="fa fa-table"></i> 管理员入口</a>
                     </li>
                 </ul>
 
@@ -131,11 +131,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             <td>${c.areainfo }</td>
                                             <td>${c.companyname }</td>
                                              <td>
-                                            <c:forEach items="${c.indexes }" var="i" begin="1" end="5">
-                                           		<${i.indexinfo }>
+                                            <c:forEach items="${c.indexes }" var="i"  begin="0" end="4" step="1">
+                                           		&lt; ${i.indexinfo } &gt;
                                             </c:forEach>
                                             </td>
-                                            <td class="center"><a class='btn btn-primary ' href="CompanyDetil?id=${c.id }">详情</a></td>
+                                            <td class="center"><a class='btn btn-primary ' href="CompanyDetil.do?id=${c.id }">详情</a></td>
                                         </tr>
                                       </c:forEach>
                                     </tbody>
@@ -147,6 +147,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <!--End Advanced Tables -->
                 </div>
             </div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 		
 				<footer><p>Copyright &copy; 2018.By TeamLycoris </p></footer>

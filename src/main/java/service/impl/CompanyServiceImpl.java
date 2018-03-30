@@ -3,14 +3,14 @@ package service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.CompanyMapper;
 import entity.Company;
+import entity.Indexes;
 import pojo.AreatoCompany;
+import pojo.IndexPojo;
 import service.CompanyService;
 @Service("companyService")
 public class CompanyServiceImpl implements CompanyService {
@@ -79,6 +79,24 @@ private CompanyMapper companyMapper;
 	@Override//测试成功 By ss
 	public List<Company> getCompanyByArea() {
 		return companyMapper.getCompanyByArea();
+	}
+	 /**
+     * 查询公司详情
+     * @author Asuna
+     * @date 2018/3/30
+     */
+	@Override
+	public Company getCompanyDetil(Integer id) {
+		return companyMapper.getCompanyDetil(id);
+	}
+
+	 /**
+     * 查询公司标签
+     * @author Asuna
+     * @date 2018/3/30
+     */
+	public List<IndexPojo> getCompanyIndexes(Integer id){
+		return companyMapper.getCompanyIndexes(id);
 	}
 	
 }

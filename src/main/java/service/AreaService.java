@@ -33,4 +33,16 @@ public interface AreaService {
 	     * @date 2018/3/28
 	     */
 	    List<Background> countAreaBackground(int id);
+	    /**
+	     * 查询所有面试记录
+	     * @author Asuna
+	     * @date 2018/3/30
+	     */
+	    int getCountOrignalData();
+	    /**
+	     * 查询所有公司数量
+	     * @author Asuna
+	     * @date 2018/3/30
+	     */
+	    int getCompanyCount();
 }

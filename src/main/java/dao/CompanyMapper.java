@@ -3,8 +3,10 @@ package dao;
 import java.util.List;
 
 import entity.Company;
+import entity.Indexes;
 import pojo.AreatoCompany;
 import pojo.CompanyInfoLabel;
+import pojo.IndexPojo;
 
 public interface CompanyMapper {
 	/**
@@ -92,4 +94,16 @@ public interface CompanyMapper {
      * @date 2018/3/30
      */
     List<Company> getCompanyByArea();
+    /**
+     * 查询公司详情
+     * @author Asuna
+     * @date 2018/3/30
+     */
+    Company getCompanyDetil(Integer id);
+    /**
+     * 查询公司标签
+     * @author Asuna
+     * @date 2018/3/30
+     */
+    List<IndexPojo> getCompanyIndexes(Integer id);
 }

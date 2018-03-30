@@ -70,4 +70,10 @@ LEFT JOIN companytoindex AS ci ON b.id=ci.idindexes
 LEFT JOIN company AS c ON ci.idcompany=c.id
 LEFT JOIN AREA AS a ON a.id=c.idarea WHERE a.id=1 GROUP BY indexinfo ORDER BY VALUE DESC LIMIT 0,15
  </select>
+ <select id="getCountOrignalData" resultType="int">
+ 	SELECT COUNT(1) FROM originaldata
+ </select>
+ <select id="getCompanyCount" resultType="int">
+ 	SELECT COUNT(1) FROM company
+ </select>
 </mapper>

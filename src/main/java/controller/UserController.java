@@ -38,9 +38,13 @@ public class UserController {
      	List<AreatoCompany> atc = companyService.getAllAreabyCompany();
      	List<Background> background=areaService.countAreaBackground(id);
      	List<Skill> skill=areaService.countAreaSkill(id);
+     	int count1=areaService.getCountOrignalData();
+     	int count2=areaService.getCompanyCount();
      	map.put("atc", atc);
      	map.put("skill", skill);
      	map.put("background", background);
+     	map.put("count1", count1);
+    	map.put("count2", count2);
 		return map;
      }
 }
