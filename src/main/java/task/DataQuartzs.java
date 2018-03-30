@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import service.WritingJsonTaskinterface;
 
-@Component
+//@Component
 public class DataQuartzs {
 	 @Autowired
      private WritingJsonTaskinterface wiritingJsonTask;

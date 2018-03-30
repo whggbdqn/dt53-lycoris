@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -68,10 +69,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="active-menu" href="homepage.jsp"><i class="fa fa-dashboard"></i> 首页</a>
+                        <a href="homepage.jsp"><i class="fa fa-dashboard"></i> 首页</a>
                     </li>
                     <li>
-                        <a href="goCompany.do"><i class="fa fa-desktop"></i> 浏览公司</a>
+                        <a href="goCompany.do" class="active-menu" ><i class="fa fa-desktop"></i> 浏览公司</a>
                     </li>
 					<li>
                         <a href="chart.html"><i class="fa fa-bar-chart-o"></i>推荐公司</a>
@@ -96,109 +97,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             北大青鸟 <small>Welcome ***</small>
                         </h1>
 					<ol class="breadcrumb">
-					  <li class="active"><a href="homepange.jsp">首页</a></li>
+					  <li><a href="homepage.jsp">首页</a></li>
+					  <li class="active"><a href="goCompany.do">浏览公司</a></li>
 					</ol> 
 		</div>
             <div id="page-inner">
 
-                <!-- /. ROW  -->
-	
-		<div class="row">
-			
-		</div><!--/.row-->
-			
-		
-                <div class="row">
-                   
-                   
-                </div>
-				
-				<div class="row">
-					
-						<div class="col-md-7">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-	                            关于在面试时的会被问道的技术问题,大体上我们都搜集到了,
-							    但是同学们似乎对记录信息并不感冒,有很多没有任何价值的记录哦.
-							    不过我们还是能从中找到一些端倪,看看目前在面试时各位都会被问
-							    到什么问题吧!
-	                            </div>
-	                            <div class="panel-body">
-	                                <div id="Skillchart" style="height: 500px;width: 850px" ></div>
-	                            </div>
-							</div>  
-						</div>
-						
-						 <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder blue">
-                            <div class="panel-left pull-left blue">
-                                <i class="fa fa-eye fa-5x"></i>
-                                
-                            </div>
-                            <div class="panel-right">
-								<h3>758</h3>
-                               <strong> 总记录数</strong>
-                            </div>
-                        </div>
-                    </div>
-						
-						  <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="panel panel-primary text-center no-boder blue">
-                            <div class="panel-left pull-left blue">
-                                <i class="fa fa-users fa-5x"></i>
-                                
-                            </div>
-                            <div class="panel-right">
-							<h3>572 </h3>
-                             <strong>公司统计</strong>
-
-                            </div>
-                        </div>
-                    </div>
-						
-						
-				</div> 
-				
-			 <div class="row">
-					
-						<div class="col-md-7">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-	                           关于在面试时,面试公司的非技术性信息,也包括一些对应聘者
-								的要求,对于青鸟的学员们,学历自然是最头疼的问题,然而似乎面试
-								公司也很喜欢去查学历呢!同时过往的工作经验几乎都是虚假的,怎么
-								处理能够通过面试呢?
-	                            </div>
-	                            <div class="panel-body">
-	                                <div id="Backgroundchart" style="height: 500px;width: 850px" ></div>
-	                            </div>
-							</div>  
-						</div>
-						
-						  <div class="col-md-3 col-sm-12 col-xs-12">
-                        <div class="panel panel-default" style="width: 600px">
-                            <div class="panel-heading" style="width: 600px">
-                               关于校区学员在各个城市的面试记录,当然并不是面试通过的结果,
-								而是每次学员面试的记录,所以这里只能告诉你目前大家都去了哪里面试
-								尝试的公司又是多少,很可惜我们并没有统计学员的信息,所以没有更多的
-								信息啦!
-                            </div>
-                            <div class="panel-body">
-                                <div id="companyCount" style="height: 480px;width: 600px"></div>
-                            </div>
-                        </div>
-                    </div>
-						 
-                  
-						
-						
-				</div> 
-				
-				
                 <div class="row">
                    <!-- 预留 -->
                 </div>
                 <!-- /. ROW  -->
+                     <div class="row">
+                <div class="col-md-12">
+                    <!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            浏览所有公司
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>地区</th>
+                                            <th>公司名称</th>
+                                            <th>标签</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${list }" var="c">
+                                        <tr class="odd gradeX">
+                                            <td>${c.areainfo }</td>
+                                            <td>${c.companyname }</td>
+                                             <td>
+                                            <c:forEach items="${c.indexes }" var="i" begin="1" end="5">
+                                           		<${i.indexinfo }>
+                                            </c:forEach>
+                                            </td>
+                                            <td class="center"><a class='btn btn-primary ' href="CompanyDetil?id=${c.id }">详情</a></td>
+                                        </tr>
+                                      </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+                </div>
+            </div>
 			
 		
 				<footer><p>Copyright &copy; 2018.By TeamLycoris </p></footer>
@@ -216,21 +164,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 
     <!-- Metis Menu Js -->
     <script src="assets/js/jquery.metisMenu.js"></script>
-    <!-- Morris Chart Js -->
-    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="assets/js/morris/morris.js"></script>
-	
-	
-	<script src="assets/js/easypiechart.js"></script>
-	<script src="assets/js/easypiechart-data.js"></script>
-	
-	 <script src="assets/js/Lightweight-Chart/jquery.chart.js"></script>
-	 <script src="echarts/echarts.js"></script>
+    <!-- DATA TABLE SCRIPTS -->
+    <script src="assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+        <script>
+            $(document).ready(function () {
+                 $('#dataTables-example').dataTable({
+"sScrollX": "100%",   //表格的宽度
+  "sScrollXInner": "110%",   //表格的内容宽度
+  "bScrollCollapse": true,  //当显示的数据不足以支撑表格的默认的高度时，依然显示纵向的滚动条。(默认是false) 
+"bPaginate": true,  //是否显示分页
+  "bLengthChange": true,  //每页显示的记录数
+  "bFilter": true, //搜索栏
+  "bInfo": true, //显示表格信息
+  "bAutoWidth": true,  //自适应宽度
+  "aoColumns": [
+      null,
+      null,
+      null,
+      {
+          "bSearchable": false, //参与搜索
+      }
+  ], //列设置，表有几列，数组就有几项
+   "bStateSave": true, //保存状态到cookie *************** 很重要 ， 当搜索的时候页面一刷新会导致搜索的消失。使用这个属性就可避免了
+  "sPaginationType": "full_numbers", //分页，一共两种样式，full_numbers和two_button(默认)
+  "oLanguage": {
+      "sLengthMenu": "每页显示 _MENU_ 条记录",
+      "sZeroRecords": "对不起，查询不到任何相关数据",
+      "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
+      "sInfoEmtpy": "找不到相关数据",
+      "sInfoFiltered": "数据表中共为 _MAX_ 条记录)",
+      "sProcessing": "正在加载中...",
+      "sSearch": "搜索",
+      "oPaginate": {
+          "sFirst":    "第一页",
+          "sPrevious": " 上一页 ",
+          "sNext":     " 下一页 ",
+          "sLast":     " 最后一页 "
+      }
+  }, //多语言配置
+ "bJQueryUI": false, //可以添加 jqury的ui theme  需要添加css
+       "aLengthMenu": [[10, 25, 50, -1, 0], ["每页10条", "每页25条", "每页50条", "显示所有数据", "不显示数据"]]  //设置每页显示记录的下拉菜单
+    });
+});
+    </script>
     <!-- Custom Js -->
-    <script src="assets/js/custom-scripts.js"></script>
-
+    <script src="assets/js/goCompany.js"></script>
       <script>
-    
       </script>
 
 </body>

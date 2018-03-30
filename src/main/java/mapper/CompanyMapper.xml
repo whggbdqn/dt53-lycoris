@@ -5,8 +5,11 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="companyname" property="companyname" jdbcType="VARCHAR" />
     <result column="companyemail" property="companyemail" jdbcType="VARCHAR" />
-    <result column="idarea" property="idarea" jdbcType="INTEGER" />
-    <result column="updatetime" property="updatetime" jdbcType="VARCHAR" />
+    <result column="areainfo" property="areainfo" jdbcType="VARCHAR" />
+    <!-- 实现一对多的关联映射 -->
+    <collection property="indexes" ofType="entity.Indexes">
+      <result column="indexinfo" property="indexinfo"/>
+    </collection>
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="entity.Company" extends="BaseResultMap" >
     <result column="companyinfo" property="companyinfo" jdbcType="LONGVARCHAR" />
@@ -113,7 +116,7 @@
   </select>
   <!--   查询地区有多少家公司  -->
   <select id="getAllAreabyCompany" resultType="pojo.AreatoCompany">
-  SELECT  a.`areainfo` as name,COUNT(2) AS value FROM company AS c 
+SELECT  a.`areainfo` as name,COUNT(2) AS value FROM company AS c 
 LEFT JOIN AREA AS a ON c.`idarea`=a.`id`
 GROUP BY idarea
   </select> 
@@ -144,5 +147,10 @@ SELECT indexes.indexinfo ,COUNT(2) FROM  companytoindex AS cind
  WHERE c.id= #{id,jdbcType=INTEGER}
  GROUP BY indexinfo 
  ORDER BY VALUE deSC
+  </select>
+  <!-- 按地区查询公司列表 分页 -->
+  <select id="getCompanyByArea" resultMap="BaseResultMap">
+	SELECT c.`id` as id,c.`companyname` as companyname,a.areainfo as areainfo,i.indexinfo as indexinfo FROM company c LEFT JOIN AREA a ON c.`idarea`=a.id LEFT JOIN companytoindex ci ON c.`id`=ci.`idcompany` LEFT JOIN INDEXES i 
+	ON ci.`idindexes`=i.id
   </select>
 </mapper>

@@ -1,5 +1,7 @@
 package entity;
 
+import java.util.List;
+
 public class Company {
     private Integer id;
     private String companyname;
@@ -7,6 +9,8 @@ public class Company {
     private Integer idarea;
     private String companyinfo;
     private String updatetime;
+    private List<Indexes> indexes;
+    private String areainfo;
     public String getUpdatetime() {
 		return updatetime;
 	}
@@ -43,4 +47,16 @@ public class Company {
     public void setCompanyinfo(String companyinfo) {
         this.companyinfo = companyinfo == null ? null : companyinfo.trim();
     }
+	public List<Indexes> getIndexes() {
+		return indexes;
+	}
+	public void setIndexes(List<Indexes> indexes) {
+		this.indexes = indexes;
+	}
+	public String getAreainfo() {
+		return areainfo;
+	}
+	public void setAreainfo(String areainfo) {
+		this.areainfo = areainfo;
+	}
 }

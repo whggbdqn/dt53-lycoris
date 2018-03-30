@@ -68,20 +68,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="active-menu" href="homepage.jsp"><i class="fa fa-dashboard"></i> 首页</a>
+                        <a href="homepage.jsp"><i class="fa fa-dashboard"></i> 首页</a>
                     </li>
                     <li>
-                        <a href="goCompany.do"><i class="fa fa-desktop"></i> 浏览公司</a>
+                        <a href="goCompany.do" class="active-menu" ><i class="fa fa-desktop"></i> 浏览公司</a>
                     </li>
 					<li>
-                        <a href="chart.html"><i class="fa fa-bar-chart-o"></i>推荐公司</a>
+                        <a href="homepage.jsp"><i class="fa fa-bar-chart-o"></i>推荐公司</a>
                     </li>
                     <li>
-                        <a href="tab-panel.html"><i class="fa fa-qrcode"></i> 个人信息</a>
+                        <a href="homepage.jsp"><i class="fa fa-qrcode"></i> 个人信息</a>
                     </li>
                     
                     <li>
-                        <a href="table.html"><i class="fa fa-table"></i> 管理员入口</a>
+                        <a href="homepage.jsp"><i class="fa fa-table"></i> 管理员入口</a>
                     </li>
                 </ul>
 
@@ -96,7 +96,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             北大青鸟 <small>Welcome ***</small>
                         </h1>
 					<ol class="breadcrumb">
-					  <li class="active"><a href="homepange.jsp">首页</a></li>
+					  <li ><a href="homepange.jsp">首页</a></li>
+					   <li class="active"><a href="goCompany.do">浏览公司</a></li>
 					</ol> 
 		</div>
             <div id="page-inner">

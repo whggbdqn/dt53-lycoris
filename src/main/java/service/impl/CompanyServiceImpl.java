@@ -71,4 +71,14 @@ private CompanyMapper companyMapper;
 	public void setTime(String time) {
 		companyMapper.setTime(time);
 	}
+	 /**
+     * 按地区查询公司
+     * @author Asuna
+     * @date 2018/3/30
+     */
+	@Override//测试成功 By ss
+	public List<Company> getCompanyByArea() {
+		return companyMapper.getCompanyByArea();
+	}
+	
 }

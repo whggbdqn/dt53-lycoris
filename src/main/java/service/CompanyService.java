@@ -26,4 +26,10 @@ public interface CompanyService {
 	     * 
 	     */
 	    void setTime(String time);
+	    /**
+	     * 按地区查询公司
+	     * @author Asuna
+	     * @date 2018/3/30
+	     */
+	    List<Company> getCompanyByArea();
 }
