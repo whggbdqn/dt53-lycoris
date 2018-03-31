@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><strong>Marvel</strong></a>
+                <a class="navbar-brand" href="index.html"><strong>TeamLycoris</strong></a>
 				
 		<div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
             </div>
@@ -68,20 +68,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a href="homepage.jsp"><i class="fa fa-dashboard"></i> 首页</a>
+                        <a href="homepage.jsp"style="font-size: 1.7em"><i class="fa fa-dashboard"></i> 首页</a>
                     </li>
                     <li>
-                        <a href="goCompany.do"><i class="fa fa-desktop"></i> 浏览公司</a>
+                        <a href="goCompany.do" style="font-size: 1.7em"><i class="fa fa-desktop"></i> 浏览公司</a>
                     </li>
 					<li>
-                        <a href="chart.html"><i class="fa fa-bar-chart-o"></i>推荐公司</a>
+                        <a href="homepage.jsp"style="font-size: 1.7em"><i class="fa fa-bar-chart-o"></i> 推荐公司</a>
                     </li>
                     <li>
-                        <a href="tab-panel.html"><i class="fa fa-qrcode"></i> 个人信息</a>
+                        <a href="homepage.jsp"style="font-size: 1.7em"><i class="fa fa-qrcode"></i>个人信息</a>
                     </li>
                     
                     <li>
-                        <a  class="active-menu" href="adminUser.jsp"><i class="fa fa-table"></i> 管理员入口</a>
+                        <a href="adminUser.jsp"style="font-size: 1.7em" class="active-menu" ><i class="fa fa-table"></i> 管理员入口</a>
                     </li>
                 </ul>
 
@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div id="page-wrapper">
 		  <div class="header"> 
                         <h1 class="page-header">
-                            北大青鸟 <small>Welcome ***</small>
+                            北大青鸟 
                         </h1>
 					<ol class="breadcrumb">
 					  <li ><a href="homepage.jsp">首页</a></li>

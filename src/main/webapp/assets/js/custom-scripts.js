@@ -79,12 +79,14 @@ var option = {
 		            type: 'shadow'
 		        }
 		    },
-//		    legend: {
-//		        data: skillname
-//		    },
+		    legend: {
+		    	  orient : 'vertical',
+			        x : 'right',
+		        data: skillname
+		    },
 		    grid: {
-		        left: '3%',
-		        right: '4%',
+		        left: '1%',
+		        right: '8%',
 		        bottom: '3%',
 		        containLabel: true
 		    },
@@ -94,7 +96,10 @@ var option = {
 		    },
 		    yAxis: {
 		        type: 'category',
-		        data: skillname
+		        data: skillname,
+		        textStyle: {
+		            fontSize: 30 // 用 legend.textStyle.fontSize 更改示例大小
+		         }
 		    },
 		    series: [
 		        {
@@ -117,7 +122,7 @@ var option = {
 	                var myChart3 = ec.init(document.getElementById('Backgroundchart')); 
 	var option = {
 			   title: {
-			        text: '关注点:面试点',
+			        text: '关注点:面试',
 			        subtext: '数据来自青鸟'
 			    },
 			    tooltip: {
@@ -126,12 +131,9 @@ var option = {
 			            type: 'shadow'
 			        }
 			    },
-//			    legend: {
-//			        data: skillname
-//			    },
 			    grid: {
-			        left: '3%',
-			        right: '4%',
+			        left: '1%',
+			        right: '8%',
 			        bottom: '3%',
 			        containLabel: true
 			    },
@@ -147,6 +149,14 @@ var option = {
 			        {
 			            name: '记录次数',
 			            type: 'bar',
+			            itemStyle:{
+			                normal:{
+			                    lable:{
+			                    show:true,
+			                    formatter:'{a}%'
+			                    }
+			                }
+			            },
 			            data: background
 			        }
 			    ]
@@ -167,6 +177,10 @@ var option = {
 	    title : { 
 	        text: '来源北大青鸟光谷校区',
 	        subtext: '真实有效数据分析',
+	        textStyle:{
+				        		fontSize: 24,
+				               fontWeight: 'bolder',
+				               color: '#333'},
 	        x:'center'
 	    },
 	    tooltip : {
@@ -185,6 +199,14 @@ var option = {
 	            type:'pie',
 	            radius : '80%',
 	            center: ['50%', '60%'],
+	            label : {normal : 
+	            					{
+					    	    	textStyle : {
+					    	    			fontSize: 24,
+							               fontWeight: 'bolder',
+					    	    	}
+		            			}
+	    	    			}, 
 	            data:atc
 	        }
 	    ]
