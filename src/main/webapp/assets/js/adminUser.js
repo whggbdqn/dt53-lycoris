@@ -16,6 +16,7 @@
         },
 
         initialization: function () {
+        
             mainApp.initFunction();
         }
     }
@@ -37,4 +38,9 @@
 		});
     });
 }(jQuery));
-
+function dataGo(){
+	$(".info").text("数据处理中,不要关闭此页面,请稍后.........")
+	$.post("dataGo.do", null, function(data) {
+		$(".info").text("数据处理完成,共"+data+"条信息被处理!");
+	})
+}

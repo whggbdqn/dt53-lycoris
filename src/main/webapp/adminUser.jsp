@@ -126,6 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="row">
 				<!-- 文件下载板块 -->
 					 <a href=downloadExcel.do class="btn btn-primary btn-lg">模板下载</a>
+					<a onclick="dataGo()" class="btn btn-primary btn-lg">开始数据处理</a><span class="info" style="font-size: 24px;color: red;"></span>
 				</div> <br><br><br><br>
 			
 				
