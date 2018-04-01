@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="dao.UserMapper" >
-
+<!-- 查询所有2级标签 -->
+<select id="getUserIndexes" resultType="entity.Indexes">
+   SELECT * FROM INDEXES WHERE taglevel=2
+</select>
 <select id="getAllUserPartInfo" resultType="entity.User">
     select userID,username,password from user
 </select>

@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import entity.Indexes;
 import entity.User;
 import entity.Usertocompany;
 
@@ -53,5 +54,13 @@ public interface UserMapper {
      * 
      */
     User loginDo(User user);
+    
+    /**
+   	 * 查询所有2级的标签
+   	 * @param user_value
+   	 * @return
+   	 * @author yf  2018/4/1
+   	 */
+    List<Indexes> getUserIndexes();
     
 }

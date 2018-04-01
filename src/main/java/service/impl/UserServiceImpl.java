@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 
 import dao.UserMapper;
 import dao.UsertocompanyMapper;
+import dao.UsertoindexMapper;
+import entity.Indexes;
 import entity.User;
 import entity.Usertocompany;
+import entity.Usertoindex;
 import service.UserService;
 @Service("userService")
 public class UserServiceImpl implements UserService {
@@ -17,6 +20,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UsertocompanyMapper usertocompanyMapper;
+	
+	@Autowired
+	private UsertoindexMapper usertoindexMapper; 
 	
 	
 	@Override
@@ -115,4 +121,26 @@ public class UserServiceImpl implements UserService {
 	public User loginDo(User user) {
 		return userMapper.loginDo(user);
 	}
+	
+	   /**
+		 * 查询所有2级的标签
+		 * @param   null
+		 * @return 标签集合
+		 * @author yf  2018/4/1
+		 */
+		public List<Indexes> getUserIndexes() {
+			// TODO Auto-generated method stub
+			return userMapper.getUserIndexes();
+		}
+
+		 /**
+	  	 * 用户添加标签
+	  	 * @param 传用户id
+	  	 * @return 返回影响行数
+	  	 * @author yf  2018/4/1
+	  	 */
+		public int insert(Usertoindex record) {
+			// TODO Auto-generated method stub
+			return usertoindexMapper.insert(record);
+		}
 }

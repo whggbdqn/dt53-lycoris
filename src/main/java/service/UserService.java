@@ -2,8 +2,10 @@ package service;
 
 import java.util.List;
 
+import entity.Indexes;
 import entity.User;
 import entity.Usertocompany;
+import entity.Usertoindex;
 
 public interface UserService {
 	/**
@@ -76,5 +78,21 @@ public interface UserService {
 	     * 
 	     */
 	    User loginDo(User user);
+	    
+	    /**
+		 * 查询所有2级的标签
+		 * @param   null
+		 * @return 标签集合
+		 * @author yf  2018/4/1
+		 */
+	    List<Indexes> getUserIndexes();
+	   
+	    /**
+	  	 * 用户添加标签
+	  	 * @param 传用户id
+	  	 * @return 返回影响行数
+	  	 * @author yf  2018/4/1
+	  	 */
+	    int insert(Usertoindex record);
 }
 	
