@@ -169,4 +169,16 @@ LEFT JOIN AREA a ON a.id=c.`idarea` ORDER BY id
   <select id="getAllCompany" resultType="entity.Company">
   	SELECT c.`id` id,c.`companyname` companyname,a.areainfo areainfo,COUNT(2) indexcount FROM company c LEFT JOIN companytoindex ci ON c.`id`=ci.`idcompany` LEFT JOIN AREA a ON c.`idarea`=a.id GROUP BY companyname ORDER BY id
   </select>
+  <!-- 多选删除company -->
+  <delete id="delmanyckey" parameterType="Integer">
+        DELETE FROM company WHERE
+        <foreach item="chk_value" collection="array" open="id in ("
+            separator="," close=")">
+            #{chk_value}
+        </foreach>
+  </delete>
+  <!-- 删除公司对应的标签 -->
+  <delete id="delCompanytoIndexes" parameterType="int">
+      DELETE FROM companytoindex WHERE idcompany=#{idcompany}
+  </delete>
 </mapper>

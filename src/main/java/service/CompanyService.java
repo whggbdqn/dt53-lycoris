@@ -53,4 +53,21 @@ public interface CompanyService {
 	     * @date 2018/3/30
 	     */
 	    List<IndexPojo> getCompanyIndexes(Integer id);
+	    /**
+		 * id多选删除
+		 * @param List<company>
+		 * @return
+		 * @author ywz
+		 */
+		int delmanyckey(Integer[] chk_value);
+		
+		 
+	    /**
+		 * 删除公司和标签
+		 * @param 传公司id
+		 * @return 影响行数
+		 * @author 
+		 */
+	    int delCompanyAndIndexes(int idcompany);
+	    
 }

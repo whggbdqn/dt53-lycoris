@@ -16,7 +16,23 @@ import service.CompanyService;
 public class CompanyController {
 	@Autowired
 	private CompanyService companyService;
-	
+	//多项公司删除
+			@RequestMapping("delCompanyIndexes.do")
+			public void delCompanyIndexes(Integer id,Model model){
+				Integer chk_value[]={4,5,6};
+				int count=companyService.delmanyckey(chk_value);
+				System.out.println(count);
+			}
+			
+		//删除公司及公司对应的标签
+			@ResponseBody
+			@RequestMapping("CompanyAndIndexes.do")
+			public int delCompanyAndIndexes(Integer idcompany,Model model){
+				idcompany=7;
+				int count=companyService.delCompanyAndIndexes(idcompany);
+				System.out.println(count);
+				return count;
+			}
 	@RequestMapping("goCompany.do")
 	public String getCompanyByArea(Integer num,Model model){
 		List<Company> list=companyService.getCompanyByArea();

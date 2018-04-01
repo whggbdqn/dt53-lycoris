@@ -140,7 +140,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                             	<td>${c.areainfo }</td>
 	                                            <td>${c.companyname }</td>
 	                                            <td class="center">${c.indexcount }</td>
-	                                           <td class="center"><a class='btn btn-primary ' href="CompanyDetil.do?id=${c.id }">详情</a></td>
+	                                           <td class="center"><a class='btn btn-primary ' href="CompanyDetil.do?id=${c.id }">详情</a>
+	                                           <a class='btn btn-primary ' href="CompanyDetil.do?id=${c.id }">删除</a>
+	                                           </td>
 	                                        </tr>
                                     </c:forEach>
                                     </tbody>

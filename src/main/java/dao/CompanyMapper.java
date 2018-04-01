@@ -9,6 +9,8 @@ import pojo.CompanyInfoLabel;
 import pojo.IndexPojo;
 
 public interface CompanyMapper {
+    //对应删除公司下的标签表的内容
+    int delCompanytoIndexes(int idcompany);
 	/**
 	 * 查询所有公司 与标签数量
 	 * @return

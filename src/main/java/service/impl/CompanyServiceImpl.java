@@ -16,11 +16,11 @@ import service.CompanyService;
 public class CompanyServiceImpl implements CompanyService {
 @Autowired
 private CompanyMapper companyMapper;
-
+	@Transactional
 	@Override
 	public int deleteByPrimaryKey(Integer id) {
 		// TODO Auto-generated method stub
-		return 0;
+		return companyMapper.deleteByPrimaryKey(id);
 	}
 
 	@Override
@@ -107,4 +107,32 @@ private CompanyMapper companyMapper;
 	public List<Company> getAllCompany(){
 		return companyMapper.getAllCompany();
 	};
+	 /**
+	 * id多选删除
+	 * @param 传数组
+	 * @return 影响行数
+	 * @author ywz
+	 */
+	@Transactional
+	public int delmanyckey(Integer[] chk_value) {
+		// TODO Auto-generated method stub
+		return companyMapper.delmanyckey(chk_value);
+	}
+
+	 /**
+	 * 删除公司和标签
+	 * @param 传公司id
+	 * @return 影响行数
+	 * @author 
+	 */
+	@Transactional
+public int delCompanyAndIndexes(int idcompany) {
+	int count=-1;
+    count=companyMapper.deleteByPrimaryKey(idcompany);
+    if(count>0){
+    	int temp=companyMapper.delCompanytoIndexes(idcompany);
+    	count=count+temp;
+    }
+	return count;
+}
 }
