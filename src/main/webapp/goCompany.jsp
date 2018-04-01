@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="homepage.jsp"style="font-size: 1.7em"><i class="fa fa-bar-chart-o"></i> 推荐公司</a>
                     </li>
                     <li>
-                        <a href="homepage.jsp"style="font-size: 1.7em"><i class="fa fa-qrcode"></i>个人信息</a>
+                        <a href="userProfile.jsp"style="font-size: 1.7em"><i class="fa fa-qrcode"></i>个人信息</a>
                     </li>
                     
                     <li>

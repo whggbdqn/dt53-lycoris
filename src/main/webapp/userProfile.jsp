@@ -72,13 +72,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="homepage.jsp"style="font-size: 1.7em"><i class="fa fa-dashboard"></i> 首页</a>
                     </li>
                     <li>
-                        <a href="goCompany.do" style="font-size: 1.7em" class="active-menu" ><i class="fa fa-desktop"></i> 浏览公司</a>
+                        <a href="goCompany.do" style="font-size: 1.7em"><i class="fa fa-desktop"></i> 浏览公司</a>
                     </li>
 					<li>
                         <a href="homepage.jsp"style="font-size: 1.7em"><i class="fa fa-bar-chart-o"></i> 推荐公司</a>
                     </li>
                     <li>
-                        <a href="userProfile.jsp"style="font-size: 1.7em"><i class="fa fa-qrcode"></i>个人信息</a>
+                        <a href="userProfile.jsp"style="font-size: 1.7em"  class="active-menu" ><i class="fa fa-qrcode"></i>个人信息</a>
                     </li>
                     
                     <li>
@@ -98,40 +98,93 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </h1>
 					<ol class="breadcrumb">
 					  <li ><a href="homepange.jsp">首页</a></li>
-					   <li class="active"><a href="goCompany.do">浏览公司</a></li>
+					   <li class="active"><a href="userProfile.jsp">个人信息</a></li>
 					</ol> 
 		</div>
             <div id="page-inner">
-
-                <!-- /. ROW  -->
-	
-		<div class="row">
-                <div class="col-md-12">
-                    <div class="jumbotron">
-                        <h2>${company.companyname } 
-                       			  <c:if test="${not empty company.companyemail }">
-                        				<a style="font-size: 16px;cursor: pointer;">${company.companyemail }</a>
-                    			  </c:if>
-                       			 <c:if test="${empty company.companyemail }">
-                        				<a style="font-size: 16px;cursor: pointer;">暂无公司邮箱</a>
-                    			  </c:if>
-                       </h2>
-                       <c:if test="${not empty company.companyinfo }">
-                        	<p style="text-indent: 36px;font-size: 18px;">${company.companyinfo }</p>
-                       </c:if>
-                        <c:if test="${empty company.companyinfo }">
-                        	<p style="text-indent: 36px;font-size: 18px;">暂无公司详细信息</p>
-                       </c:if>
-                         	<input type="hidden" value="${company.id }" id="companyid">
-                             <div class="panel panel-default" style="width: 100%;border-color: white;">
-		                            <div class="panel-heading" style="width: 100%;font-size: 20px;">这是该公司在过往的面试中会问的问题哦!</div>
-	                              		<div id="companyDetilCharts" style="height: 600px;width: 100%;margin-bottom: 50px;border-color: white;"></div>
-	                           		</div>
-                              </div>
-                    </div>
+              	 <div class="row">
+              	 	 <div class="col-md-12">
+              	 	 	 <div class="panel panel-primary">
+	                        <div class="panel-heading">
+	                           个人信息
+	                        </div>
+	                        <div class="panel-body">
+			                        	<!-- 个人信息 -->
+			              	 	<div class="col-md-4 col-sm-4">
+				                    <div class="panel panel-default">
+				                        <div class="panel-heading">
+				                           ${user }
+				                        </div>
+				                        <div class="panel-body">
+				                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+				                        </div>
+				                        <div class="panel-footer">
+				                            Panel Footer
+				                        </div>
+				                    </div>
                 </div>
-                 
+	                        </div>
+                 	   </div>
+              	 	</div>
+              	 </div>
+              <h2>创建模态框（Modal）</h2>
+				<!-- 按钮触发模态框 -->
+				<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+				    添加
+				</button>
+				<button class="btn btn-primary btn-lg" onclick="update_info(8)" data-toggle="modal" data-target="#myModal">
+				    编辑
+				</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                	 修改信息
+                </h4>
             </div>
+            <div class="modal-body">
+                <div class="row">
+              	 <div class="col-md-8 col-md-offset-2">
+              	 	<div class="panel panel-default">
+	                        <div class="panel-body">
+								                        	 		<div class="col-md-12">
+								                        	 			<form action="">
+												                        	 		<div class="form-group">
+											                                            <label>账号</label>
+										                                           		 <p class="form-control-static">***账号***</p>
+											                                            <label>姓名</label>
+											                                           	 <input class="form-control" placeholder="请输入姓名">
+											                                           	 <label>邮箱</label>
+													                        	 		<input class="form-control" placeholder="请输入邮箱">
+													                        	 			 <label>电话</label>
+										                                           	 <input class="form-control" placeholder="请输入邮箱">
+										                                           	 <label>班级</label>
+											                                            <select class="form-control">
+											                                                <option value="1">1</option>
+											                                            </select>
+											                                            <label>意向城市</label>
+											                                            <select class="form-control">
+											                                                <option value="1">1</option>
+											                                            </select>
+											                                            <div class="col-md-4  col-md-offset-4">
+											                                             <button type="submit" class="btn btn-default" style="margin-top: 30px;" >确认</button>
+											                                             </div>
+								                                     				</div>
+								                                     		 </form>		
+								                                     	</div>
+				                        	 </div>
+	                         </div>
+	                </div>
+              	 </div>
+              </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 		
 		                           
 				<footer><p>Copyright &copy; 2018.By TeamLycoris </p></footer>
