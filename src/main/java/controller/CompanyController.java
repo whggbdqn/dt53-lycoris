@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import entity.Company;
-import entity.Indexes;
 import pojo.IndexPojo;
 import service.CompanyService;
 
@@ -21,7 +20,6 @@ public class CompanyController {
 	@RequestMapping("goCompany.do")
 	public String getCompanyByArea(Integer num,Model model){
 		List<Company> list=companyService.getCompanyByArea();
-		System.out.println(list.size());
 		model.addAttribute("list",list);  //将数据设置model对象中，传递给页面
 		return "goCompany.jsp";  //返回视图
 	}
@@ -37,5 +35,14 @@ public class CompanyController {
 	public List<IndexPojo> getCompanyIndexes(Integer id,Model model){
 		List<IndexPojo> list=companyService.getCompanyIndexes(id);
 		return list;
+	}
+	@RequestMapping("getCompanyForM.do")
+	public String getCompanyForM(Model model){
+		List<Company> list= companyService.getAllCompany();
+		for (Company company : list) {
+			System.out.println(company.getId()+"-----"+company.getCompanyname()+"-----------"+company.getIndexcount());
+		}
+		model.addAttribute("list",list);  //将数据设置model对象中，传递给页面
+		return "CompanyManage.jsp";
 	}
 }

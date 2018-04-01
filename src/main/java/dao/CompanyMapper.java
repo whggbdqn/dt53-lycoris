@@ -10,10 +10,10 @@ import pojo.IndexPojo;
 
 public interface CompanyMapper {
 	/**
-	 * 查询所有公司 分页显示
+	 * 查询所有公司 与标签数量
 	 * @return
-	 * 2018.3.27 1051 
-	 * @author ywz
+	 * 2018.4.1
+	 * @author ss
 	 */
 	List<Company> getAllCompany();
 	/**

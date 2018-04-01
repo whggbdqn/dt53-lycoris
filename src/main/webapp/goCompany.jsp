@@ -81,9 +81,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <a href="userProfile.jsp"style="font-size: 1.7em"><i class="fa fa-qrcode"></i>个人信息</a>
                     </li>
                     
-                    <li>
-                        <a href="adminUser.jsp"style="font-size: 1.7em"><i class="fa fa-table"></i> 管理员入口</a>
-                    </li>
+                   <li>
+                        <a href="#" style="font-size: 1.7em"><i class="fa fa-sitemap"></i> 管理员入口<span class="fa arrow"></span></a>
+	                        <ul class="nav nav-second-level">
+		                            <li>
+		                                <a href="adminUser.jsp">数据导入</a>
+		                            </li>
+		                            <li>
+		                                 <a href="getCompanyForM.do" class="active-menu" >数据管理</a>
+		                            </li>
+	                           </ul>
+                      </li>
                 </ul>
 
             </div>

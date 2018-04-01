@@ -165,4 +165,8 @@ LEFT JOIN AREA a ON a.id=c.`idarea` ORDER BY id
     	RIGHT JOIN companytoindex ci ON ci.`idindexes`=i.id 
     	RIGHT JOIN company c ON c.`id`=ci.`idcompany` WHERE c.`id`=#{id} GROUP BY i.indexinfo
   </select>
+  <!-- 查询所有公司和所属标签数 -->
+  <select id="getAllCompany" resultType="entity.Company">
+  	SELECT c.`id` id,c.`companyname` companyname,a.areainfo areainfo,COUNT(2) indexcount FROM company c LEFT JOIN companytoindex ci ON c.`id`=ci.`idcompany` LEFT JOIN AREA a ON c.`idarea`=a.id GROUP BY companyname ORDER BY id
+  </select>
 </mapper>

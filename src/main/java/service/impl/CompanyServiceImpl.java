@@ -98,5 +98,13 @@ private CompanyMapper companyMapper;
 	public List<IndexPojo> getCompanyIndexes(Integer id){
 		return companyMapper.getCompanyIndexes(id);
 	}
-	
+	 /**
+	 * 查询所有公司 与标签数量
+	 * @return
+	 * 2018.4.1
+	 * @author ss
+	 */
+	public List<Company> getAllCompany(){
+		return companyMapper.getAllCompany();
+	};
 }

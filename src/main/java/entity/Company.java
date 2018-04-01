@@ -11,6 +11,7 @@ public class Company {
     private String updatetime;
     private List<Indexes> indexes;
     private String areainfo;
+    private Integer indexcount;
     public String getUpdatetime() {
 		return updatetime;
 	}
@@ -58,5 +59,11 @@ public class Company {
 	}
 	public void setAreainfo(String areainfo) {
 		this.areainfo = areainfo;
+	}
+	public Integer getIndexcount() {
+		return indexcount;
+	}
+	public void setIndexcount(Integer indexcount) {
+		this.indexcount = indexcount;
 	}
 }

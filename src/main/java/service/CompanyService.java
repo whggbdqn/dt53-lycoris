@@ -17,6 +17,13 @@ public interface CompanyService {
 	    int updateByPrimaryKey(Company record);
 	    int checkCompanyName(String companyName);
 	    /**
+		 * 查询所有公司 与标签数量
+		 * @return
+		 * 2018.4.1
+		 * @author ss
+		 */
+		List<Company> getAllCompany();
+	    /**
 	     * 查询地区公司
 	     * @return	地区有多少家公司集合
 	    */
