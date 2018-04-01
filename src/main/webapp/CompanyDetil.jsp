@@ -108,49 +108,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="row">
                 <div class="col-md-12">
                     <div class="jumbotron">
-                        <h1>${company.companyname }</h1>
-                         <c:if test="${empty company.companyemail}">
-                        	<a>暂无此公司邮箱</a>
-                        </c:if>
-                        <c:if test="${not empty company.companyemail}">
-                        	<a>${company.companyemail }</a>
-                        </c:if>
-                        <c:if test="${empty company.companyinfo}">
-                        	<p>暂无此公司详情</p>
-                        </c:if>
-                        <c:if test="${not empty company.companyinfo}">
-                        	<p>${company.companyinfo }</p>
-                        </c:if>
+                        <h2>${company.companyname } 
+                       			  <c:if test="${not empty company.companyemail }">
+                        				<a style="font-size: 16px;cursor: pointer;">${company.companyemail }</a>
+                    			  </c:if>
+                       			 <c:if test="${empty company.companyemail }">
+                        				<a style="font-size: 16px;cursor: pointer;">暂无公司邮箱</a>
+                    			  </c:if>
+                       </h2>
+                       <c:if test="${not empty company.companyinfo }">
+                        	<p style="text-indent: 36px;font-size: 18px;">${company.companyinfo }</p>
+                       </c:if>
+                        <c:if test="${empty company.companyinfo }">
+                        	<p style="text-indent: 36px;font-size: 18px;">暂无公司详细信息</p>
+                       </c:if>
+                         	<input type="hidden" value="${company.id }" id="companyid">
+                             <div class="panel panel-default" style="width: 100%;border-color: white;">
+		                            <div class="panel-heading" style="width: 100%;font-size: 20px;">这是该公司在过往的面试中会问的问题哦!</div>
+	                              		<div id="companyDetilCharts" style="height: 600px;width: 100%;margin-bottom: 50px;border-color: white;"></div>
+	                           		</div>
+                              </div>
                     </div>
                 </div>
+                 
             </div>
 		
-                <div class="row">
-               			  <p>
-                            <a class="btn btn-primary btn-lg" role="button" onclick="getDetil();">查看详情</a>
-                        </p>
-                            <div class="panel-heading" style="width: 600px">
-                            	<h4>这是该公司在过往的面试中会问的问题哦!</h4>
-                            </div>
-		                            <input type="hidden" value="${company.id }" id="companyid">
-                                	<div id="companyDetilCharts" style="height: 480px;width: 600px"></div>
-                </div>
-				
-				<div class="row">
-					
-				</div> 
-				
-			 <div class="row">
-					
-				</div>
-				
-				
-                <div class="row">
-                   <!-- 预留 -->
-                </div>
-                <!-- /. ROW  -->
-			
-		
+		                           
 				<footer><p>Copyright &copy; 2018.By TeamLycoris </p></footer>
             </div>
             <!-- /. PAGE INNER  -->
@@ -166,11 +149,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	 
     <!-- Metis Menu Js -->
     <script src="assets/js/jquery.metisMenu.js"></script>
-    <!-- Morris Chart Js -->
-    <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="assets/js/morris/morris.js"></script>
-	
-	
 	<script src="assets/js/easypiechart.js"></script>
 	<script src="assets/js/easypiechart-data.js"></script>
 	

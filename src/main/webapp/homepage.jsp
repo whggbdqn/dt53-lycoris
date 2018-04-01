@@ -130,17 +130,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!-- 第二行展示公司统计 -->
 				<div class="row">
 					<!-- 饼图介绍 -->
-					<div class="col-md-5">
+					<div class="col-md-12">
 	                    <div class="panel panel-danger">
 	                        <div class="panel-heading"style="font-size: 1.7em">
 	                          公司统计
 	                        </div>
 	                        <div class="panel-body">
-	                            <p style="text-indent: 30px;font-size: 1.7em;line-height: 2em;">上方数据是目前添加的记录条数与总的公司统计,如果在录入的时候有的公司名称打
+	                        <div class="col-md-6">
+	                            <p style="text-indent: 30px;font-size: 1.7em;line-height: 2em;margin-top: 15%;">上方数据是目前添加的记录条数与总的公司统计,如果在录入的时候有的公司名称打
 	                            	错了或者不全面,可能会造成展示的信息有误!
 	                            	右侧饼图是关于校区学员在各个城市的面试记录,当然并不是面试通过的结果,
 									而是每次学员面试的记录,所以这里只能告诉你目前大家都去了哪里面试
 									尝试的公司又是多少,很可惜我们并没有统计学员的信息,所以没有更多的信息啦!</p>
+	                         </div>
+	                         <!-- 饼图 -->
+	                          <div class="col-md-6">
+		                           <div class="panel panel-default" style="width: 100%;border-color: white;">
+			                            <div class="panel-heading" style="width: 100%"></div>
+				                            <div class="panel-body">
+				                                <div id="companyCount" style="height: 60%;width: 60%;position: relative;left:25%;'"></div>
+				                            </div>
+			                       	 </div>
+		                         </div>
+		                         <!-- /饼图 -->
 	                        </div>
 	                        <div class="panel-footer">
 	                            目前可以插入北京、上海、武汉、深圳地区的数据
@@ -148,45 +160,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                    </div>
 	                </div>
 	                <!--/ 饼图介绍 -->
-					<!-- 饼图 -->
-						<div class="col-md-7">
-	                        <div class="panel panel-default" style="width: 100%">
-	                            <div class="panel-heading" style="width: 100%"></div>
-	                            <div class="panel-body">
-	                                <div id="companyCount" style="height: 50%;width: 50%;position: relative;left:25%;'"></div>
-	                            </div>
-	                        </div>
-	                    </div>
-					<!-- /饼图 -->
+					
+					
 				 </div>
 				  <!-- /第二行展示公司统计 -->
 				  	<hr>
 				  <!-- 第三行展示技术统计 -->
 				<div class="row">
 			<!-- 条形图介绍 -->
-					<div class="col-md-5">
+					<div class="col-md-12">
 	                    <div class="panel panel-danger">
-	                        <div class="panel-heading"style="font-size: 1.7em">
-	                          技术统计
-	                        </div>
-	                        <div class="panel-body">
-	                            <p style="text-indent: 30px;font-size: 1.7em;line-height: 2em;">关于在面试时的会被问道的技术问题,大体上我们都搜集到了, 但是同学们似乎对记录信息并不感冒,有很多没有任何价值的记录哦. 不过我们还是能从中找到一些端倪,看看目前在面试时各位都会被问 到什么问题吧!</p>
-	                        </div>
+		                        <div class="panel-heading"style="font-size: 1.7em">
+		                          技术统计
+		                        </div>
+		                        <div class="panel-body">
+			                            <p style="text-indent: 30px;font-size: 1.7em;line-height: 2em;">关于在面试时的会被问道的技术问题,大体上我们都搜集到了, 但是同学们似乎对记录信息并不感冒,有很多没有任何价值的记录哦. 不过我们还是能从中找到一些端倪,看看目前在面试时各位都会被问 到什么问题吧!</p>
+								
+										<div class="panel panel-default" style="width: 100%;border-color: white;">
+				                            <div class="panel-heading" style="width: 100%"></div>
+				                            <div class="panel-body">
+				                                <div id="Skillchart" style="height: 60%;width: 100%" ></div>
+				                  	</div>
+								</div>
+								
+                        </div>
 	                        <div class="panel-footer">
 	                            目前展示的为所有地区的数据统计
 	                        </div>
 	                    </div>
 	                </div>
 	                <!-- /条形图介绍 -->
-						<div class="col-md-7">
-							<div class="panel panel-default" style="width: 100%">
-	                            <div class="panel-heading" style="width: 100%"></div>
-	                            <div class="panel-body">
-	                                <div id="Skillchart" style="height: 50%;width: 100%" ></div>
-	                            </div>
-							</div>  
-						</div>
-						
 						
 				</div> 
 				<!-- /第三行展示技术统计 -->
@@ -194,7 +197,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- 第四行展示面试统计 -->
 			 <div class="row">
 			 <!-- 条形图介绍 -->
-					<div class="col-md-5">
+					<div class="col-md-12">
 	                    <div class="panel panel-danger">
 	                        <div class="panel-heading"style="font-size: 1.7em">
 	                          面试统计
@@ -204,6 +207,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								的要求,对于青鸟的学员们,学历自然是最头疼的问题,然而似乎面试
 								公司也很喜欢去查学历呢!同时过往的工作经验几乎都是虚假的,怎么
 								处理能够通过面试呢?</p>
+								<div class="panel panel-default" style="width: 100%;border-color: white;">
+	                            <div class="panel-heading" style="width: 100%"></div>
+	                            <div class="panel-body">
+	                                <div id="Backgroundchart" style="height: 60%;width: 100%" ></div>
+	                            </div>
+						</div>
 	                        </div>
 	                        <div class="panel-footer">
 	                            目前展示的为所有地区的数据统计
@@ -211,14 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                    </div>
 	                </div>
 	                <!-- /条形图介绍 -->
-						<div class="col-md-7">
-							<div class="panel panel-default" style="width: 100%">
-	                            <div class="panel-heading" style="width: 100%"></div>
-	                            <div class="panel-body">
-	                                <div id="Backgroundchart" style="height: 50%;width: 100%" ></div>
-	                            </div>
-							</div>  
-						</div>
+							
 				</div> 
 					<!-- /第四行展示面试统计 -->
 				

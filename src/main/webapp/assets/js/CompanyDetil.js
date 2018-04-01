@@ -37,60 +37,59 @@
 			}
 		});
     });
-	
+  //定义一个全局的图表对象
+    var myChart;
+    var name=[];
+    var arr=[];
+	require(
+            [
+                'echarts',
+                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
+            ],
+              function(ec){
+            myChart = ec.init(document.getElementById('companyDetilCharts'));
+            $.post("CompanyIndexes.do", {"id":id}, function(data) {
+              	 for(var i=0;i<data.length;i++){
+              		 name.push(data[i].name);
+                        arr.push({
+                          name : data[i].name,
+                          value : data[i].value
+                       }); 
+                     };
+                     myChart.hideLoading();    //隐藏加载动画
+                     myChart.setOption({        //加载数据图表
+                    	 title : { 
+               		        text: '来源北大青鸟光谷校区',
+               		        subtext: '真实有效数据分析',
+               		        x:'center'
+               		    },
+                  	   legend: {
+             		        orient : 'vertical',
+             		        x : 'left',
+             		        data:name,
+             		       textStyle:{
+             		        	 fontSize:20 // 让字体变大
+             	            }
+             		    },
+             		   tooltip : {
+             		        trigger: 'item',
+             		        formatter: "{a} <br/>{b} : {c} ({d}%)"
+             		    }, 
+             		 series : [
+             		        {
+             		            name:'关注点',
+             		            type:'pie',
+             		            radius : '80%',
+             		            center: ['50%', '60%'],
+             		           textStyle : {
+                                   fontWeight : 300 ,
+                                   fontSize : 20   //文字的字体大小
+                               },
+             		            data:arr
+             		        }
+             		    ]
+                     });
+              },"json");
+    });
 }(jQuery));
-var flag=0;
-function getDetil(){
-	if(flag==0){
-	var id=$("#companyid").val();
-	var index;//图表的数据
-	var indexname=[];
-	$.post("CompanyIndexes.do",{"id":id},function(data){
-		for(var i=1;i<data.length;i++){
-			indexname.push(data.name);
-		}
-		index=data;
-	},"json");
-	//图表1展示公司的面试统计 *********************************************************************************
-		require(
-		            [
-		                'echarts',
-		                'echarts/chart/pie' // 使用柱状图就加载bar模块，按需加载
-		            ],
-		            function (ec) {
-		                // 基于准备好的dom，初始化echarts图表
-		                var myChart = ec.init(document.getElementById('companyDetilCharts')); 
-		        var option = {
-		    title : { 
-		        text: '来源北大青鸟光谷校区',
-		        subtext: '真实有效数据分析',
-		        x:'center'
-		    },
-		    tooltip : {
-		        trigger: 'item',
-		        formatter: "{a} <br/>{b} : {c} ({d}%)"
-		    }, 
-		    legend: {
-		        orient : 'vertical',
-		        x : 'left',
-		        data:location
-		    },
-		           calculable : true,
-		    series : [
-		        {
-		            name:'关注点',
-		            type:'pie',
-		            radius : '80%',
-		            center: ['50%', '60%'],
-		            data:index
-		        }
-		    ]
-		};
-		                // 为echarts对象加载数据 
-		                myChart.setOption(option); 
-		            }
-		        );
-		//flag=1;	    
-	}
-}
 	

@@ -79,11 +79,6 @@ var option = {
 		            type: 'shadow'
 		        }
 		    },
-		    legend: {
-		    	  orient : 'vertical',
-			        x : 'right',
-		        data: skillname
-		    },
 		    grid: {
 		        left: '1%',
 		        right: '8%',
@@ -92,18 +87,26 @@ var option = {
 		    },
 		    xAxis: {
 		        type: 'value',
-		        boundaryGap: [0, 0.01]
+		        boundaryGap: [0, 0.01],
+		        axisLabel:{ //调整x轴的lable  
+		            textStyle:{
+		                fontSize:15 // 让字体变大
+		            }
+		        }
 		    },
 		    yAxis: {
 		        type: 'category',
 		        data: skillname,
-		        textStyle: {
-		            fontSize: 30 // 用 legend.textStyle.fontSize 更改示例大小
-		         }
+		        axisLabel:{ //调整x轴的lable  
+		            textStyle:{
+		                fontSize:15 // 让字体变大
+		            }
+		        }
 		    },
 		    series: [
 		        {
 		            name: '记录次数',
+		            color:'#337AB7',
 		            type: 'bar',
 		            data: skill
 		        }
@@ -139,11 +142,21 @@ var option = {
 			    },
 			    xAxis: {
 			        type: 'value',
-			        boundaryGap: [0, 0.01]
+			        boundaryGap: [0, 0.01],
+			        axisLabel:{ //调整x轴的lable  
+			            textStyle:{
+			                fontSize:15 // 让字体变大
+			            }
+			        }
 			    },
 			    yAxis: {
 			        type: 'category',
-			        data: backgroundname
+			        data: backgroundname,
+			        axisLabel:{ //调整x轴的lable  
+			            textStyle:{
+			                fontSize:15 // 让字体变大
+			            }
+			        }
 			    },
 			    series: [
 			        {
@@ -151,6 +164,7 @@ var option = {
 			            type: 'bar',
 			            itemStyle:{
 			                normal:{
+			                	color:'#337AB7',
 			                    lable:{
 			                    show:true,
 			                    formatter:'{a}%'
@@ -177,10 +191,6 @@ var option = {
 	    title : { 
 	        text: '来源北大青鸟光谷校区',
 	        subtext: '真实有效数据分析',
-	        textStyle:{
-				        		fontSize: 24,
-				               fontWeight: 'bolder',
-				               color: '#333'},
 	        x:'center'
 	    },
 	    tooltip : {
@@ -190,23 +200,29 @@ var option = {
 	    legend: {
 	        orient : 'vertical',
 	        x : 'left',
-	        data:location
+	        data:location,
+	        textStyle:{
+	        	 fontSize:20 // 让字体变大
+            },
 	    },
 	           calculable : true,
 	    series : [
 	        {
 	            name:'北大青鸟',
 	            type:'pie',
-	            radius : '80%',
+	            radius : '75%',
 	            center: ['50%', '60%'],
-	            label : {normal : 
-	            					{
-					    	    	textStyle : {
-					    	    			fontSize: 24,
-							               fontWeight: 'bolder',
-					    	    	}
-		            			}
-	    	    			}, 
+	            label:{            //饼图图形上的文本标签
+                    normal:{
+                        show:true,
+                        position:'inner', //标签的位置
+                        textStyle : {
+                            fontWeight : 300 ,
+                            fontSize : 20   //文字的字体大小
+                        },
+                        formatter:'{d}%'
+                    }
+                },
 	            data:atc
 	        }
 	    ]
