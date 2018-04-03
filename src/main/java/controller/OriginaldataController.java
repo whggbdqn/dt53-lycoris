@@ -45,7 +45,6 @@ public class OriginaldataController {
 			try {
 				System.out.println("进入功能");
 				String path=request.getSession().getServletContext().getRealPath("upload");
-				System.out.println(123);
 				String uploadFileName=pfile.getOriginalFilename();
 				System.out.println(uploadFileName);
 				String expname=uploadFileName.substring(uploadFileName.lastIndexOf("."));

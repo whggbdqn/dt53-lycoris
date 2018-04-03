@@ -141,7 +141,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                                            <td>${c.companyname }</td>
 	                                            <td class="center">${c.indexcount }</td>
 	                                           <td class="center"><a class='btn btn-primary ' href="CompanyDetil.do?id=${c.id }">详情</a>
-	                                           <a class='btn btn-primary ' href="CompanyDetil.do?id=${c.id }">删除</a>
+	                                           <a class='btn btn-primary ' href="CompanyAndIndexes.do?id=${c.id }">删除</a>
+	                                           <input type="hidden" class="cid" value="${c.id }">
 	                                           </td>
 	                                        </tr>
                                     </c:forEach>
@@ -216,6 +217,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
  "bJQueryUI": false, //可以添加 jqury的ui theme  需要添加css
        "aLengthMenu": [[10, 25, 50, -1, 0], ["每页10条", "每页25条", "每页50条", "显示所有数据", "不显示数据"]]  //设置每页显示记录的下拉菜单
     });
+    
+    
 });
     </script>
     <!-- Custom Js -->

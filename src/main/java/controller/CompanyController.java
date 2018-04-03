@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import entity.Company;
 import pojo.IndexPojo;
@@ -16,22 +17,19 @@ import service.CompanyService;
 public class CompanyController {
 	@Autowired
 	private CompanyService companyService;
-	//多项公司删除
-			@RequestMapping("delCompanyIndexes.do")
-			public void delCompanyIndexes(Integer id,Model model){
-				Integer chk_value[]={4,5,6};
-				int count=companyService.delmanyckey(chk_value);
-				System.out.println(count);
-			}
-			
-		//删除公司及公司对应的标签
-			@ResponseBody
-			@RequestMapping("CompanyAndIndexes.do")
-			public int delCompanyAndIndexes(Integer idcompany,Model model){
-				idcompany=7;
-				int count=companyService.delCompanyAndIndexes(idcompany);
-				System.out.println(count);
+	
+	private Integer ids[];
+			//多项公司删除 业务逻辑问题//废弃
+			/*@RequestMapping("delCompanyIndexes.do")
+			public int delCompanyIndexes(){
+				int count=companyService.delmanyckey(ids);
 				return count;
+			}*/
+		//删除公司及公司对应的标签
+			@RequestMapping("CompanyAndIndexes.do")
+			public ModelAndView delCompanyAndIndexes(Integer id){
+				companyService.delCompanyAndIndexes(id);
+				return new ModelAndView("getCompanyForM.do");
 			}
 	@RequestMapping("goCompany.do")
 	public String getCompanyByArea(Integer num,Model model){
@@ -55,9 +53,6 @@ public class CompanyController {
 	@RequestMapping("getCompanyForM.do")
 	public String getCompanyForM(Model model){
 		List<Company> list= companyService.getAllCompany();
-		for (Company company : list) {
-			System.out.println(company.getId()+"-----"+company.getCompanyname()+"-----------"+company.getIndexcount());
-		}
 		model.addAttribute("list",list);  //将数据设置model对象中，传递给页面
 		return "CompanyManage.jsp";
 	}

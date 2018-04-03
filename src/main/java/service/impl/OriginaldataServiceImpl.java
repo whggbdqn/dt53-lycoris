@@ -85,7 +85,7 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	        Row rowHead = sheet.getRow(0);
 	        
 	        //判断表头是否正确
-	        if(rowHead.getPhysicalNumberOfCells() != 5)
+	        if(rowHead.getPhysicalNumberOfCells() != 4)
 	        {
 	            System.out.println("表头的数量不对!");
 	        }
@@ -108,17 +108,17 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	            Originaldata originaldata=new Originaldata();
 	            //获得获得第i行第0列的 String类型对象
 	            //名称
-	            Cell cell = row.getCell((short)1);
+	            Cell cell = row.getCell((short)0);
 	            companyname = cell.getStringCellValue().toString().trim();
 	            //特点
-	            Cell cell1 = row.getCell((short)2);
+	            Cell cell1 = row.getCell((short)1);
 	            cell1.setCellType(CellType.STRING);
 	            companyinfo= cell1.getStringCellValue().toString().trim();
 	            //地区
-	            Cell cell2 = row.getCell((short)3);
+	            Cell cell2 = row.getCell((short)2);
 	            areainfo = cell2.getStringCellValue().toString().trim();
 	            //邮箱
-	            Cell cell3 = row.getCell((short)4);
+	            Cell cell3 = row.getCell((short)3);
 	            if(null==cell3||null==cell3.getStringCellValue()){
 	            	companyemail=null;
 	            }else{
@@ -136,7 +136,7 @@ public class OriginaldataServiceImpl implements OriginaldataService {
 	           // 获得一个数字类型的数据
 	           // cell = row.getCell((short)1);
 	           // latitude = (int) cell.getNumericCellValue();
-	          // System.out.println("公司："+originaldata.getCompanyname()+"\t"+"地区："+originaldata.getAreainfo());
+	          // System.out.println("公司："+originaldata.getCompanyname()+"\t"+"地区："+originaldata.getAreainfo()+"\t"+"特点："+originaldata.getCompanyinfo()+"\t"+"邮箱："+originaldata.getCompanyemail());
 	            
 	        }
 		return list;

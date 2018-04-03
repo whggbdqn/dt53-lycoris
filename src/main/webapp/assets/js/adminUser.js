@@ -39,8 +39,10 @@
     });
 }(jQuery));
 function dataGo(){
-	$(".info").text("数据处理中,不要关闭此页面,请稍后.........")
+	$(".info").text("数据处理后台处理中,不影响其他操作")
 	$.post("dataGo.do", null, function(data) {
-		$(".info").text("数据处理完成,共"+data+"条信息被处理!");
+		if(data>0){
+			$(".info").text("数据处理完成,共"+data+"条信息被处理");
+		}
 	})
 }

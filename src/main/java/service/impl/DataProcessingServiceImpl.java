@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 
 import entity.Area;
@@ -24,7 +22,7 @@ import entity.Company;
 import entity.Companytoindex;
 import entity.Originaldata;
 @Component("dataProcessingService")
-public class DataProcessingServiceImpl implements DataProcessingService {
+public class DataProcessingServiceImpl implements DataProcessingService{
 	@Autowired
 	private OriginaldataService originaldataService;//原始数据
 	@Autowired
@@ -42,6 +40,7 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 	private Companytoindex record;
 	private Company company;
 	private Area area ;
+	
 		/**
 		 * 数据处理
 		 * @author ss
@@ -150,4 +149,6 @@ public class DataProcessingServiceImpl implements DataProcessingService {
 //		TRUNCATE company;
 //		TRUNCATE companytoindex;
 //		UPDATE originaldata SET otherinfo ='0';
+
+		
 	}

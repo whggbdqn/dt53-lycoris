@@ -21,11 +21,12 @@ import pojo.Skill;
 import service.AreaService;
 import service.CompanyService;
 import service.DataProcessingService;
+import service.TaskService;
 
 
 
-@Component
-public class TaskController {
+@Component("task")
+public class TaskController implements TaskService{
 		@Autowired
 		private CompanyService companyService;
 		@Autowired
